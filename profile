@@ -20,3 +20,11 @@ fi
 if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
+
+# include user's private library paths for various scripting languages
+PERL5LIB="$HOME/lib/perl5${PERL5LIB:+:$PERL5LIB}"
+PERL5LIB="$HOME/lib/perl5/vendor_perl${PERL5LIB:+:$PERL5LIB}"
+PERL5LIB="$HOME/lib/perl5/site_perl${PERL5LIB:+:$PERL5LIB}"
+PYTHONPATH="$HOME/lib/python${PYTHONPATH:+:$PYTHONPATH}"
+RUBYLIB="$HOME/lib/ruby${RUBYLIB:+:$RUBYLIB}"
+export PERL5LIB PYTHONPATH RUBYLIB
