@@ -28,3 +28,9 @@ PERL5LIB="$HOME/lib/perl5/site_perl${PERL5LIB:+:$PERL5LIB}"
 PYTHONPATH="$HOME/lib/python${PYTHONPATH:+:$PYTHONPATH}"
 RUBYLIB="$HOME/lib/ruby${RUBYLIB:+:$RUBYLIB}"
 export PERL5LIB PYTHONPATH RUBYLIB
+
+# set default text editor, pager, and web browser
+type vim > /dev/null 2>&1 && EDITOR=vim || EDITOR=vi
+VISUAL=$EDITOR
+type less > /dev/null 2>&1 && PAGER=less || PAGER=more
+type w3m > /dev/null 2>&1 && BROWSER="${BROWSER:+$BROWSER:}w3m"
