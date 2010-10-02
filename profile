@@ -34,3 +34,5 @@ type vim > /dev/null 2>&1 && EDITOR=vim || EDITOR=vi
 VISUAL=$EDITOR
 type less > /dev/null 2>&1 && PAGER=less || PAGER=more
 type w3m > /dev/null 2>&1 && BROWSER="${BROWSER:+$BROWSER:}w3m"
+export EDITOR VISUAL PAGER
+[ -n "$BROWSER" ] && export BROWSER
