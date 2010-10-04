@@ -36,3 +36,8 @@ type less > /dev/null 2>&1 && PAGER=less || PAGER=more
 type w3m > /dev/null 2>&1 && BROWSER="${BROWSER:+$BROWSER:}w3m"
 export EDITOR VISUAL PAGER
 [ -n "$BROWSER" ] && export BROWSER
+if [ "$PAGER" = less ]; then
+    LESS=iFRSX
+    MANPAGER='less -s'
+    export LESS MANPAGER
+fi
