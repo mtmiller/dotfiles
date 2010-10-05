@@ -62,3 +62,13 @@ colordiffrc:
   GNU General Public License for more details.
 
   http://colordiff.sourceforge.net/colordiff-1.0.9.tar.gz
+
+vimrc:
+
+  Copyright (C) 2010 Mike Miller <mtmiller@ieee.org>
+
+  Derived from vimrc_example.vim by Bram Moolenaar <Bram@vim.org>, part of
+  Vim, which is distributed under the Vim license.  See COPYING.VIM for the
+  full text of the license.
+
+  hg clone https://vim.googlecode.com/hg/ vim-hg
