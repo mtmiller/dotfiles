@@ -1,7 +1,8 @@
-" An example for a vimrc file.
+" ~/.vimrc: executed by Vim during initialization.
 "
-" Maintainer:	Bram Moolenaar <Bram@vim.org>
-" Last change:	2008 Dec 17
+" Maintainer:		Mike Miller <mtmiller@ieee.org>
+" Original Author:	Bram Moolenaar <Bram@vim.org>
+" Last Change:		2010-10-05
 "
 " To use it, copy it to
 "     for Unix and OS/2:  ~/.vimrc
@@ -36,6 +37,11 @@ set incsearch		" do incremental searching
 
 " Don't use Ex mode, use Q for formatting
 map Q gq
+
+" ZZ and ZQ make it too easy (IMHO) to accidentally save or lose changes, turn
+" them off.
+map ZZ <Nop>
+map ZQ <Nop>
 
 " CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
 " so that you can undo CTRL-U after inserting a line break.
