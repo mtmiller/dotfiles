@@ -109,9 +109,11 @@ if [ -f ~/.bash_completion ] && ! shopt -oq posix; then
     . ~/.bash_completion
 fi
 
-# Enable cdargs commands and completion if ~/.bash_cdargs is present.
-# The file can be copied from /usr/share/doc/cdargs/examples/cdargs-bash.sh
-# in the cdargs package on a Debian system.
+# Enable cdargs commands and completion if ~/.bash_cdargs is present.  The
+# file can be copied from /usr/share/doc/cdargs/examples/cdargs-bash.sh in
+# the cdargs package on a Debian system.  I prefer changing the name just so
+# it is listed with other bash initialization files.  The Fedora cdargs
+# package installs this file system-wide so this is not needed.
 if [ -f ~/.bash_cdargs ]; then
     . ~/.bash_cdargs
 fi
