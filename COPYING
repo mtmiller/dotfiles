@@ -72,3 +72,12 @@ vimrc:
   full text of the license.
 
   hg clone https://vim.googlecode.com/hg/ vim-hg
+
+vim/colors/zenburn.vim:
+
+  Maintainer:   Jani Nurminen <slinky@iki.fi>
+  Last Change:  $Id: zenburn.vim,v 2.13 2009/10/24 10:16:01 slinky Exp $
+  URL:      	http://slinky.imukuppi.org/zenburnpage/
+  License:      GPL
+
+  http://slinky.imukuppi.org/zenburn/zenburn.vim
