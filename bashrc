@@ -102,3 +102,16 @@ fi
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
+
+# enable programmable completion from ~/.bash_completion (needed for some
+# systems where system-wide bash-completion is not installed).
+if [ -f ~/.bash_completion ] && ! shopt -oq posix; then
+    . ~/.bash_completion
+fi
+
+# Enable cdargs commands and completion if ~/.bash_cdargs is present.
+# The file can be copied from /usr/share/doc/cdargs/examples/cdargs-bash.sh
+# in the cdargs package on a Debian system.
+if [ -f ~/.bash_cdargs ]; then
+    . ~/.bash_cdargs
+fi
