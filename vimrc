@@ -2,7 +2,7 @@
 "
 " Maintainer:		Mike Miller <mtmiller@ieee.org>
 " Original Author:	Bram Moolenaar <Bram@vim.org>
-" Last Change:		2010-10-05
+" Last Change:		2010-10-07
 "
 " To use it, copy it to
 "     for Unix and OS/2:  ~/.vimrc
@@ -51,6 +51,11 @@ inoremap <C-U> <C-G>u<C-U>
 if has('mouse')
   set mouse=a
 endif
+
+" Extend the runtimepath using the pathogen plugin.
+" http://github.com/tpope/vim-pathogen
+call pathogen#runtime_append_all_bundles()
+call pathogen#helptags()
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
