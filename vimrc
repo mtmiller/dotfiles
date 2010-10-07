@@ -105,3 +105,16 @@ if !exists(":DiffOrig")
   command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
 		  \ | wincmd p | diffthis
 endif
+
+" Prefer a dark background on terminal emulators.
+if &term =~ "^xterm"
+  set background=dark
+endif
+
+" Only do the following when running as gvim.
+if has("gui_running")
+
+  " Load my favorite color scheme by default.
+  colorscheme zenburn
+
+endif
