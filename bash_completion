@@ -1,0 +1,25 @@
+# ~/.bash_completion: user programmable completion for bash.
+# This file is typically included by the system-wide bash completion package
+# for user completion configuration.
+
+# If this file has already been loaded do not load it again.
+[ -n "$BASH_COMPLETION_USER_FILE" ] && return
+
+# Set unique constants for this file and the directory it loads.
+BASH_COMPLETION_USER_FILE=~/.bash_completion
+BASH_COMPLETION_USER_DIR=~/.bash_completion.d
+readonly BASH_COMPLETION_USER_FILE BASH_COMPLETION_USER_DIR
+
+# Turn on extended globbing and programmable completion.
+shopt -s extglob progcomp
+
+# Load completion definitions from the directory specified above.
+if [ -d "$BASH_COMPLETION_USER_DIR" ]; then
+    for i in "$BASH_COMPLETION_USER_DIR"/*; do
+	case "${i##*/}" in
+	*~|*.bak|*.swp)	;;
+	*)		[ -f "$i" ] && [ -r "$i" ] && . "$i" ;;
+	esac
+    done
+fi
+unset i
