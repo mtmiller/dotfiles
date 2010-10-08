@@ -5,7 +5,11 @@
 if [ "$SHLVL" = 1 ]; then
     if [ -x /usr/bin/clear_console ]; then
 	/usr/bin/clear_console -q
-    elif [ -x /usr/bin/clear ]; then
-	/usr/bin/clear
+    else
+	# don't bother clearing a pseudo-terminal
+	case `tty` in
+	/dev/pts/*) ;;
+	*)          [ -x /usr/bin/clear ] && /usr/bin/clear ;;
+	esac
     fi
 fi
