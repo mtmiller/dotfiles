@@ -29,12 +29,15 @@ PYTHONPATH="$HOME/lib/python${PYTHONPATH:+:$PYTHONPATH}"
 RUBYLIB="$HOME/lib/ruby${RUBYLIB:+:$RUBYLIB}"
 export PERL5LIB PYTHONPATH RUBYLIB
 
-# Try to determine where Ruby gems install executables and add to PATH.
-GEMBINDIR=`ruby -rubygems -e 'puts Gem.bindir' 2> /dev/null`
-if [ -n "$GEMBINDIR" ] && [ -d "$GEMBINDIR" ]; then
-    PATH="$GEMBINDIR:$PATH"
+# Try to determine where RubyGems executables are installed and add to PATH.
+# Depending on RubyGems configuration it could already be in PATH.
+dir=`ruby -rubygems -e 'puts Gem.bindir' 2> /dev/null`
+if [ -n "$dir" ] && [ -d "$dir" ]; then
+    if ! echo "$PATH" | egrep '(^|:)'"$dir"'($|:)' > /dev/null 2>&1; then
+	PATH="$dir:$PATH"
+    fi
 fi
-unset GEMBINDIR
+unset dir
 
 # set default text editor, pager, and web browser
 type vim > /dev/null 2>&1 && EDITOR=vim || EDITOR=vi
