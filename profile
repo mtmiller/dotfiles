@@ -30,11 +30,12 @@ RUBYLIB="$HOME/lib/ruby${RUBYLIB:+:$RUBYLIB}"
 export PERL5LIB PYTHONPATH RUBYLIB
 
 # Try to determine where RubyGems executables are installed and add to PATH.
-# Depending on RubyGems configuration it could already be in PATH.
 dir=`ruby -rubygems -e 'puts Gem.bindir' 2> /dev/null`
 if [ -n "$dir" ] && [ -d "$dir" ]; then
+    # Depending on RubyGems configuration it could already be in PATH.
     if ! echo "$PATH" | egrep '(^|:)'"$dir"'($|:)' > /dev/null 2>&1; then
-	PATH="$dir:$PATH"
+	# Put this directory at the front of PATH, but after ~/bin if present.
+	PATH=`echo "$PATH" | sed -e 's,^\(.*'"$HOME/bin"':\)\?,\1'"$dir:,"`
     fi
 fi
 unset dir
