@@ -1,0 +1,71 @@
+Except as otherwise noted below, all files in this package:
+
+  Copyright (C) 2010 Mike Miller <mtmiller@ieee.org>
+
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+Files derived from other sources
+--------------------------------
+
+bash_logout, bashrc, profile:
+
+  Copyright (C) 2010 Mike Miller <mtmiller@ieee.org>
+  Copyright (c) 2000-2010 Matthias Klose <doko@debian.org>
+  Copyright (C) 1989-2006 Free Software Foundation, Inc.
+
+  Bash is free software; you can redistribute it and/or modify it under
+  the terms of the GNU General Public License as published by the Free
+  Software Foundation; either version 2, or (at your option) any later
+  version.
+
+  Bash is distributed in the hope that it will be useful, but WITHOUT
+  ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+  FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
+  for more details.
+
+  http://ftp.debian.org/debian/pool/main/b/bash/bash_4.1.orig.tar.gz
+  http://ftp.debian.org/debian/pool/main/b/bash/bash_4.1-3.diff.gz
+
+colordiffrc:
+
+  Copyright (C) 2010 Mike Miller <mtmiller@ieee.org>
+  Copyright (C) 2002-2009 Dave Ewart <davee@sungate.co.uk>
+
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
+  (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  http://colordiff.sourceforge.net/colordiff-1.0.9.tar.gz
+
+vimrc:
+
+  Copyright (C) 2010 Mike Miller <mtmiller@ieee.org>
+
+  Derived from vimrc_example.vim by Bram Moolenaar <Bram@vim.org>, part of
+  Vim, which is distributed under the Vim license.  See COPYING.VIM for the
+  full text of the license.
+
+  hg clone https://vim.googlecode.com/hg/ vim-hg
+
+vim/colors/zenburn.vim:
+
+  Maintainer:   Jani Nurminen <slinky@iki.fi>
+  Last Change:  $Id: zenburn.vim,v 2.13 2009/10/24 10:16:01 slinky Exp $
+  URL:      	http://slinky.imukuppi.org/zenburnpage/
+  License:      GPL
+
+  http://slinky.imukuppi.org/zenburn/zenburn.vim
