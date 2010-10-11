@@ -69,3 +69,12 @@ vim/colors/zenburn.vim:
   License:      GPL
 
   http://slinky.imukuppi.org/zenburn/zenburn.vim
+
+vim/bundle/vim-fugitive:
+
+  Author:  Tim Pope <vimNOSPAM@tpope.org>
+  License: Same terms as Vim itself
+
+  See COPYING.VIM for the full text of the Vim license.
+
+  http://github.com/tpope/vim-fugitive
