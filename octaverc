@@ -1,9 +1,9 @@
 # ~/.octaverc: Octave per-user initialization file.
 
 # If Octave is running in a known terminal emulator set the title.
-term_title = strcat('GNU Octave ', version());
+term_title = sprintf('GNU Octave %s', version());
 if regexp(getenv('TERM'), '^xterm')
-  PS1(sprintf("%c]0;%s%c%s", oct2dec(033), term_title, oct2dec(007), PS1()));
+  PS1(sprintf('\\[\\033]0;%s\\007\\]%s', term_title, PS1()));
 end
 clear term_title
 
