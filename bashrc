@@ -75,7 +75,28 @@ esac
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    if [ -r ~/.dircolors ]; then
+	# be backwards-compatible: attempt to detect keywords not understood by
+	# the installed version of dircolors and filter them out
+	errs=$(dircolors -b ~/.dircolors 2>&1 > /dev/null)
+	bad=$(echo "$errs" | sed -n 's/^.*: unrecognized keyword \(.*\)$/\1/p')
+	if [ "$bad" ]; then
+	    filter='fgrep -v "$bad"'
+	    # special case: if dircolors doesn't understand RESET fall back to
+	    # using NORMAL and FILE
+	    for word in $bad; do
+		case "$word" in
+		RESET) filter="sed 's/^RESET.*$/NORMAL 00\nFILE 00/' | $filter"
+		esac
+	    done
+	    eval "$(cat ~/.dircolors | eval $filter | dircolors -b -)"
+	else
+	    eval "$(dircolors -b ~/.dircolors)"
+	fi
+	unset bad errs filter word
+    else
+	eval "$(dircolors -b)"
+    fi
     alias ls='ls --color=auto'
     #alias dir='dir --color=auto'
     #alias vdir='vdir --color=auto'
