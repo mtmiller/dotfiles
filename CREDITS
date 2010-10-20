@@ -51,6 +51,14 @@ colordiffrc:
 
   http://colordiff.sourceforge.net/colordiff-1.0.9.tar.gz
 
+dircolors:
+
+  Copyright (C) 1996, 1999-2010 Free Software Foundation, Inc.
+  Copying and distribution of this file, with or without modification,
+  are permitted provided the copyright notice and this notice are preserved.
+
+  git clone git://git.sv.gnu.org/coreutils
+
 vimrc:
 
   Copyright (C) 2010 Mike Miller <mtmiller@ieee.org>
