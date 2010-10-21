@@ -56,8 +56,10 @@ endif
 
 " Extend the runtimepath using the pathogen plugin.
 " http://github.com/tpope/vim-pathogen
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
+if has("eval")
+  call pathogen#runtime_append_all_bundles()
+  call pathogen#helptags()
+endif
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
