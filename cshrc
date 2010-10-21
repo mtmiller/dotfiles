@@ -3,6 +3,9 @@
 # force the umask in case it was changed by the system configuration
 umask 027
 
+# Clear any aliases inherited from the system (no thank you, Red Hat)
+unalias *
+
 if ($?tcsh && $?prompt) then
 
 	# make tcsh behavior a little closer to that of bash
