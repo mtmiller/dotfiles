@@ -117,6 +117,12 @@ if &term =~ "^xterm"
   set background=dark
 endif
 
+" User customizations for syntax highlighting.
+if has("syntax")
+  let g:fortran_fixed_source = 1
+  let g:fortran_have_tabs = 1
+endif
+
 " Only do the following when running as gvim.
 if has("gui_running")
 
