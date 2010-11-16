@@ -26,6 +26,9 @@ if ($?tcsh && $?prompt) then
 		case xterm*:
 			set prompt = "%{\033]0;%n@%m: %~\007%}$prompt"
 			breaksw
+		case screen*:
+			set prompt = "%{\033_%n@%m: %~\033\\%}$prompt"
+			breaksw
 		endsw
 	endif
 
