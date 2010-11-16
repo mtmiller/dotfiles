@@ -57,9 +57,10 @@ endif
 
 " Extend the runtimepath using the pathogen plugin.
 " http://github.com/tpope/vim-pathogen
-if has("eval")
-  call pathogen#runtime_append_all_bundles()
-  call pathogen#helptags()
+let s:pluginpath = 'pathogen#'
+if has("eval") && v:version >= 700
+  call {s:pluginpath}runtime_append_all_bundles()
+  call {s:pluginpath}helptags()
 endif
 
 " Switch syntax highlighting on, when the terminal has colors
