@@ -1,17 +1,14 @@
-" ~/.vimrc: executed by Vim during initialization.
+" vimrc_normal.vim: executed by Vim from ~/.vimrc during initialization.
 "
-" Maintainer:		Mike Miller <mtmiller@ieee.org>
+" Maintainer:		Mike Miller
 " Original Author:	Bram Moolenaar <Bram@vim.org>
-" Last Change:		2010-10-21
+" Last Change:		2011-02-28
 "
-" To use it, copy it to
-"     for Unix and OS/2:  ~/.vimrc
-"	      for Amiga:  s:.vimrc
-"  for MS-DOS and Win32:  $VIM\_vimrc
-"	    for OpenVMS:  sys$login:.vimrc
+" Install in the runtime path (e.g. ~/.vim) to be found by ~/.vimrc.
+" This file is sourced only for Vim normal, big, or huge.
 
 " When started as "evim", evim.vim will already have done these settings.
-if v:progname =~? "evim"
+if v:progname =~? "evim" || v:progname =~? "eview"
   finish
 endif
 
@@ -58,7 +55,7 @@ endif
 " Extend the runtimepath using the pathogen plugin.
 " http://github.com/tpope/vim-pathogen
 let s:pluginpath = 'pathogen#'
-if has("eval") && v:version >= 700
+if v:version >= 700
   call {s:pluginpath}runtime_append_all_bundles()
   call {s:pluginpath}helptags()
 endif
@@ -80,7 +77,7 @@ if has("autocmd")
   filetype plugin indent on
 
   " Put these in an autocmd group, so that we can delete them easily.
-  augroup vimrcEx
+  augroup vimrcNormal
   au!
 
   " For all text files set 'textwidth' to 78 characters.
