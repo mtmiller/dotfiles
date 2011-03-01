@@ -9,6 +9,23 @@
 " - If Vim is invoked as ex, vi, or view, configure like vi.
 " - Otherwise, bootstrap vimrc_normal.vim to configure Vim.
 "
+" First fix some things that may be inherited from buggy system vimrc
+" configuration files, for either Vim or vi.
+" - Restore the default file character encoding list, see :help fencs.
+if v:lang =~ 'utf8$' || v:lang =~ 'UTF-8$'
+  set fileencodings=ucs-bom,utf-8,default,latin1
+endif
+" - Remove unwanted and just plain broken autocommands (sorry, Red Hat).
+if has('autocmd')
+  augroup fedora
+  autocmd!
+  augroup! fedora
+  augroup redhat
+  autocmd!
+  augroup! redhat
+  augroup END
+  autocmd!
+endif
 " If the command name is not ex, vi, or view, turn control over to
 " vimrc_normal.vim.  If Vim is compiled with the tiny or small set of
 " features, the if..endif will be skipped over as well.
