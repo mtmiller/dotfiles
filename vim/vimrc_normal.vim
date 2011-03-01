@@ -108,6 +108,10 @@ endif
 
 " User customizations for syntax highlighting.
 if has("syntax")
+  let g:is_posix = 1
+  if v:version < 700
+    let g:is_kornshell = 1
+  endif
   let g:fortran_fixed_source = 1
   let g:fortran_have_tabs = 1
 endif
