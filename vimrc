@@ -1,18 +1,22 @@
 " ~/.vimrc: initialize Vim to behave like Vim or vi depending on the
-" compiled-in feature set and how it was invoked.
+" compiled-in feature set and how it is invoked.
 "
 " Copyright (C) 2011 Mike Miller
 " License: GPL-3+
 "
-" - If vim is tiny or small, configure like vi.
-" - If vim is invoked as ex, vi, or view, configure like vi.
+" Intended behavior:
+" - If Vim is tiny or small, configure like vi.
+" - If Vim is invoked as ex, vi, or view, configure like vi.
 " - Otherwise, bootstrap vimrc_normal.vim to configure Vim.
 "
+" If the command name is not ex, vi, or view, turn control over to
+" vimrc_normal.vim.  If Vim is compiled with the tiny or small set of
+" features, the if..endif will be skipped over as well.
 if v:progname != 'ex' && v:progname !~ '^vi\(ew\)\?$'
   runtime vimrc_normal.vim
   finish
 endif
-" If this file is still sourcing, Vim is tiny or small or was invoked as
+" If this file is still sourcing, Vim is tiny or small or is invoked as
 " ex, vi, or view.
 " - Turn off automatic file type detection.
 if has('autocmd')
