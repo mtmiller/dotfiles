@@ -48,6 +48,7 @@ endif
 set compatible			" Revert to vi-compatible mode.
 set cpoptions+={\|&/\\.		" Enable POSIX vi compatibility.
 set cedit& viminfo&		" Clear options not reset by above.
+set noloadplugins		" Disable startup loading of plugins.
 set shortmess+=I		" Disable Vim splash screen.
 set t_AB= t_AF= t_Sb= t_Sf=	" Disable terminal color escape codes.
 source $HOME/.exrc		" Execute commands from ~/.exrc.
