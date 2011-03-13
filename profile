@@ -29,16 +29,24 @@ PYTHONPATH="$HOME/lib/python${PYTHONPATH:+:$PYTHONPATH}"
 RUBYLIB="$HOME/lib/ruby${RUBYLIB:+:$RUBYLIB}"
 export PERL5LIB PYTHONPATH RUBYLIB
 
-# Try to determine where RubyGems executables are installed and add to PATH.
-dir=`ruby -rubygems -e 'puts Gem.bindir' 2> /dev/null`
+# Configure personal RubyGems environment and add bin directory to PATH.
+cmd='puts (defined?(RbConfig) ? RbConfig : Config)::CONFIG["ruby_version"]'
+ver=$(ruby -rrbconfig -e "$cmd" 2> /dev/null)
+if [ -n "$ver" ]; then
+    GEM_HOME="$HOME/.gem/ruby/$ver"
+    GEM_PATH="$GEM_HOME"
+    export GEM_HOME GEM_PATH
+fi
+cmd='puts Gem.bindir'
+dir=$(ruby -rrubygems -e "$cmd" 2> /dev/null)
 if [ -n "$dir" ] && [ -d "$dir" ]; then
-    # Depending on RubyGems configuration it could already be in PATH.
+    # Make sure bin directory is not a duplicate in PATH.
     if ! echo "$PATH" | egrep '(^|:)'"$dir"'($|:)' > /dev/null 2>&1; then
 	# Put this directory at the front of PATH, but after ~/bin if present.
-	PATH=`echo "$PATH" | sed -e 's,^\(.*'"$HOME/bin"':\)\?,\1'"$dir:,"`
+	PATH=$(echo "$PATH" | sed -e 's,^\(.*'"$HOME/bin"':\)\?,\1'"$dir:,")
     fi
 fi
-unset dir
+unset cmd dir ver
 
 # set default text editor, pager, and web browser
 type vim > /dev/null 2>&1 && EDITOR=vim || EDITOR=vi
