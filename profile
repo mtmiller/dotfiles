@@ -70,6 +70,7 @@ done
 [ -n "$VISUAL"  ] && export VISUAL  || unset VISUAL
 [ -n "$PAGER"   ] && export PAGER   || unset PAGER
 [ -n "$BROWSER" ] && export BROWSER || unset BROWSER
+unset util
 if [ "$PAGER" = less ]; then
     LESS=iFRSX
     MANPAGER='less -s'
