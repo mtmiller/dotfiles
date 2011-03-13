@@ -58,11 +58,18 @@ done
 for util in less more; do
     type $util > /dev/null 2>&1 && PAGER=$util && break
 done
-type w3m > /dev/null 2>&1 && BROWSER="${BROWSER:+$BROWSER:}w3m"
+if [ -n "$DISPLAY" ]; then
+    for util in chromium-browser firefox; do
+	type $util > /dev/null 2>&1 && BROWSER=$util && break
+    done
+fi
+for util in w3m; do
+    type $util > /dev/null 2>&1 && BROWSER="${BROWSER:+$BROWSER:}$util" && break
+done
 [ -n "$EDITOR"  ] && export EDITOR  || unset EDITOR
 [ -n "$VISUAL"  ] && export VISUAL  || unset VISUAL
 [ -n "$PAGER"   ] && export PAGER   || unset PAGER
-[ -n "$BROWSER" ] && export BROWSER
+[ -n "$BROWSER" ] && export BROWSER || unset BROWSER
 if [ "$PAGER" = less ]; then
     LESS=iFRSX
     MANPAGER='less -s'

@@ -10,11 +10,3 @@ elif type metacity > /dev/null 2>&1; then
     WINDOW_MANAGER=metacity
 fi
 [ -n "$WINDOW_MANAGER" ] && export WINDOW_MANAGER
-
-# Set the preferred web browser for gnome session.
-if type chromium-browser > /dev/null 2>&1; then
-    BROWSER="chromium-browser${BROWSER:+:$BROWSER}"
-elif type firefox > /dev/null 2>&1; then
-    BROWSER="firefox${BROWSER:+:$BROWSER}"
-fi
-[ -n "$BROWSER" ] && export BROWSER
