@@ -132,4 +132,8 @@ if has("gui_running")
     set guifont=Lucida_Console:h9:cANSI,Courier_New:h9:cANSI,Terminal:h9
   endif
 
+  " Override default less options for a chance of working in the GUI
+  " (e.g. :shell command or man page lookup)
+  let $LESS = 'diFrSX'
+
 endif
