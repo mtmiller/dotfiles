@@ -37,6 +37,12 @@ if [ -n "$ver" ]; then
     GEM_PATH="$GEM_HOME"
     export GEM_HOME GEM_PATH
 fi
+cmd='puts Gem.default_dir'
+dir=$(ruby -rrubygems -e "$cmd" 2> /dev/null)
+if [ -n "$dir" ] && [ -d "$dir" ]; then
+    GEM_PATH="${GEM_PATH:+$GEM_PATH:}$dir"
+    export GEM_PATH
+fi
 cmd='puts Gem.bindir'
 dir=$(ruby -rrubygems -e "$cmd" 2> /dev/null)
 if [ -n "$dir" ] && [ -d "$dir" ]; then
