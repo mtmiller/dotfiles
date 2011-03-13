@@ -48,12 +48,20 @@ if [ -n "$dir" ] && [ -d "$dir" ]; then
 fi
 unset cmd dir ver
 
-# set default text editor, pager, and web browser
-type vim > /dev/null 2>&1 && EDITOR=vim || EDITOR=vi
-VISUAL=$EDITOR
-type less > /dev/null 2>&1 && PAGER=less || PAGER=more
+# Set default text editor, pager, and web browser.
+for util in vim vi ex ed; do
+    type $util > /dev/null 2>&1 && EDITOR=$util && break
+done
+for util in vim vi; do
+    type $util > /dev/null 2>&1 && VISUAL=$util && break
+done
+for util in less more; do
+    type $util > /dev/null 2>&1 && PAGER=$util && break
+done
 type w3m > /dev/null 2>&1 && BROWSER="${BROWSER:+$BROWSER:}w3m"
-export EDITOR VISUAL PAGER
+[ -n "$EDITOR"  ] && export EDITOR  || unset EDITOR
+[ -n "$VISUAL"  ] && export VISUAL  || unset VISUAL
+[ -n "$PAGER"   ] && export PAGER   || unset PAGER
 [ -n "$BROWSER" ] && export BROWSER
 if [ "$PAGER" = less ]; then
     LESS=iFRSX
