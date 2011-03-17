@@ -1,7 +1,6 @@
 # ~/.ssh/config: ssh client per-user configuration file.
 
 # Default configuration for all hosts.
-
 Host *
     ForwardAgent no
     ForwardX11 no
@@ -9,5 +8,6 @@ Host *
     StrictHostKeyChecking ask
     Protocol 2
     SendEnv LANG LC_*
+    HashKnownHosts yes
     GSSAPIAuthentication yes
     GSSAPIDelegateCredentials no
