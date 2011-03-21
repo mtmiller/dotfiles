@@ -128,6 +128,20 @@ esac
 #alias la='ls -A'
 #alias l='ls -CF'
 
+# Define command aliases to invoke the preferred editor and pager utilities.
+# Use the sensible-utils commands if on Debian; otherwise, use the values of
+# standard variables.
+if type sensible-editor > /dev/null 2>&1; then
+    alias editor=sensible-editor
+elif [ -n "${VISUAL:-$EDITOR}" ]; then
+    alias editor="${VISUAL:-$EDITOR}"
+fi
+if type sensible-pager > /dev/null 2>&1; then
+    alias pager=sensible-pager
+elif [ -n "$PAGER" ]; then
+    alias pager="$PAGER"
+fi
+
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
