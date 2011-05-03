@@ -116,11 +116,8 @@ if has("syntax")
   let g:fortran_have_tabs = 1
 endif
 
-" Only do the following when running as gvim.
-if has("gui_running")
-
-  " Load my favorite color scheme by default.
-  colorscheme zenburn
+" Settings specific to using the GUI.
+if has("gui")
 
   " Fonts to use in gvim.  Always have fallbacks, and handle each platform in
   " its own special way, see :help setting-guifont.
@@ -132,8 +129,16 @@ if has("gui_running")
     set guifont=Lucida_Console:h9:cANSI,Courier_New:h9:cANSI,Terminal:h9
   endif
 
+  " The following settings must be done when the GUI starts.
+  augroup guiInitCommands
+  au!
+
+  " Load my favorite color scheme by default.
+  autocmd GUIEnter * colorscheme zenburn
+
   " Override default less options for a chance of working in the GUI
   " (e.g. :shell command or man page lookup)
-  let $LESS = 'diFrSX'
+  autocmd GUIEnter * let $LESS = $LESS . 'dr'
+  augroup END
 
 endif
