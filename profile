@@ -55,10 +55,10 @@ fi
 unset cmd dir ver
 
 # Set default text editor, pager, and web browser.
-for util in vim vi ex ed; do
+for util in vimx vim vi ex ed; do
     type $util > /dev/null 2>&1 && EDITOR=$util && break
 done
-for util in vim vi; do
+for util in vimx vim vi; do
     type $util > /dev/null 2>&1 && VISUAL=$util && break
 done
 for util in less more; do
