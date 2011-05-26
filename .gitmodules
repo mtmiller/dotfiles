@@ -1,0 +1,6 @@
+[submodule "vim/bundle/nerdtree"]
+	path = vim/bundle/nerdtree
+	url = ../../scrooloose/nerdtree.git
+[submodule "vim/bundle/vim-fugitive"]
+	path = vim/bundle/vim-fugitive
+	url = ../../tpope/vim-fugitive.git
