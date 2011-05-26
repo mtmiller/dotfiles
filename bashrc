@@ -133,13 +133,23 @@ esac
 # standard variables.
 if type sensible-editor > /dev/null 2>&1; then
     alias editor=sensible-editor
+    alias e=sensible-editor
+    alias v=sensible-editor
 elif [ -n "${VISUAL:-$EDITOR}" ]; then
     alias editor="${VISUAL:-$EDITOR}"
+    alias e="${VISUAL:-$EDITOR}"
+    alias v="${VISUAL:-$EDITOR}"
 fi
 if type sensible-pager > /dev/null 2>&1; then
     alias pager=sensible-pager
 elif [ -n "$PAGER" ]; then
     alias pager="$PAGER"
+fi
+
+# Compensate for Red Hat installing the most featureful Vim under a
+# different name.
+if type vimx > /dev/null 2>&1; then
+    alias vim=vimx
 fi
 
 # Alias definitions.
