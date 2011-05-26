@@ -21,13 +21,32 @@ if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
 
-# include user's private library paths for various scripting languages
-PERL5LIB="$HOME/lib/perl5${PERL5LIB:+:$PERL5LIB}"
-PERL5LIB="$HOME/lib/perl5/vendor_perl${PERL5LIB:+:$PERL5LIB}"
-PERL5LIB="$HOME/lib/perl5/site_perl${PERL5LIB:+:$PERL5LIB}"
-PYTHONPATH="$HOME/lib/python${PYTHONPATH:+:$PYTHONPATH}"
-RUBYLIB="$HOME/lib/ruby${RUBYLIB:+:$RUBYLIB}"
-export PERL5LIB PYTHONPATH RUBYLIB
+# Configure user Perl library paths.
+# Assume Perl modules are installed as perl Makefile.PL PREFIX=~
+for t in priv vendor site; do
+    cmd="\$_ = \$Config{${t}libexp}; s{\$Config{${t#priv}prefixexp}}{$HOME}"
+    case $t in
+	priv) ;;
+	*)    cmd="$cmd; s{\/\$Config{version}}{};" ;;
+    esac
+    cmd="$cmd; print"
+    dir=$(perl -MConfig -e "$cmd" 2> /dev/null)
+    if [ -n "$dir" ]; then
+	PERL5LIB="$dir${PERL5LIB:+:$PERL5LIB}"
+	export PERL5LIB
+    fi
+done
+unset t
+
+# Configure user Python library paths.
+# Assume Python packages are installed as python setup.py install --prefix=~
+cmd="from distutils import sysconfig"
+cmd="$cmd; print sysconfig.get_python_lib(0,0,prefix='$HOME')"
+dir=$(python -c "$cmd" 2> /dev/null)
+if [ -n "$dir" ]; then
+    PYTHONPATH="$dir${PYTHONPATH:+:$PYTHONPATH}"
+    export PYTHONPATH
+fi
 
 # Configure personal RubyGems environment and add bin directory to PATH.
 cmd='puts (defined?(RbConfig) ? RbConfig : Config)::CONFIG["ruby_version"]'
