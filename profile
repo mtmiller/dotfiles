@@ -22,21 +22,16 @@ if [ -d "$HOME/bin" ] ; then
 fi
 
 # Configure user Perl library paths.
-# Assume Perl modules are installed as perl Makefile.PL PREFIX=~
-for t in priv vendor site; do
-    cmd="\$_ = \$Config{${t}libexp}; s{\$Config{${t#priv}prefixexp}}{$HOME}"
-    case $t in
-	priv) ;;
-	*)    cmd="$cmd; s{\/\$Config{version}}{};" ;;
-    esac
-    cmd="$cmd; print"
-    dir=$(perl -MConfig -e "$cmd" 2> /dev/null)
+# Assume Perl modules are installed as perl Makefile.PL INSTALL_BASE=~ or
+# perl Build.PL --install_base ~
+for cmd in "print catdir('$HOME', qw(lib perl5))" \
+           "print catdir('$HOME', qw(lib perl5), \$Config{archname})"; do
+    dir=$(perl -MConfig -MFile::Spec::Functions -e "$cmd" 2> /dev/null)
     if [ -n "$dir" ]; then
 	PERL5LIB="$dir${PERL5LIB:+:$PERL5LIB}"
 	export PERL5LIB
     fi
 done
-unset t
 
 # Configure user Python library paths.
 # Assume Python packages are installed as python setup.py install --prefix=~
