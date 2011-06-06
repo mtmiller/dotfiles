@@ -8,14 +8,6 @@
 # for ssh logins, install and configure the libpam-umask package.
 umask 027
 
-# if running bash
-if [ -n "$BASH_VERSION" ]; then
-    # include .bashrc if it exists
-    if [ -f "$HOME/.bashrc" ]; then
-	. "$HOME/.bashrc"
-    fi
-fi
-
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
@@ -95,4 +87,9 @@ if [ "$PAGER" = less ]; then
     LESS=iFRSX
     MANPAGER='less -s'
     export LESS MANPAGER
+fi
+
+# Include ~/.bashrc if this is a bash interactive login shell.
+if [ -n "$PS1" ] && [ -n "$BASH_VERSION" ] && [ -f "$HOME/.bashrc" ]; then
+    . "$HOME/.bashrc"
 fi
