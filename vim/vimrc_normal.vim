@@ -129,6 +129,10 @@ if has("gui")
     set guifont=Lucida_Console:h9:cANSI,Courier_New:h9:cANSI,Terminal:h9
   endif
 
+  " GUI customizations.  No blinking cursor, no tearoffs, no toolbar.
+  set guicursor=a:blinkon0
+  set guioptions-=tT
+
   " The following settings must be done when the GUI starts.
   augroup guiInitCommands
   au!
