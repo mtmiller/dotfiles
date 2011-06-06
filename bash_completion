@@ -5,6 +5,14 @@
 # If this file has already been loaded do not load it again.
 [ -n "$BASH_COMPLETION_USER_FILE" ] && return
 
+# Check for minimum safe version of bash for certain features.
+bash=${BASH_VERSION%.*}; bmajor=${bash%.*}; bminor=${bash#*.}
+if [ $bmajor -lt 3 ] || [ $bmajor -eq 3 -a $bminor -lt 2 ]; then
+    unset bash bmajor bminor
+    return
+fi
+unset bash bmajor bminor
+
 # Set unique constants for this file and the directory it loads.
 BASH_COMPLETION_USER_FILE=~/.bash_completion
 BASH_COMPLETION_USER_DIR=~/.bash_completion.d
