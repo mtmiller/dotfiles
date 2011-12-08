@@ -95,6 +95,10 @@ if [ "$PAGER" = less ]; then
     MANPAGER='less -s'
     export LESS MANPAGER
 fi
+if [ -n "$EDITOR" ]; then
+    FCEDIT="$EDITOR"
+    export FCEDIT
+fi
 
 # Include ~/.bashrc if this is a bash interactive login shell.
 if [ -n "$PS1" ] && [ -n "$BASH_VERSION" ] && [ -f "$HOME/.bashrc" ]; then
