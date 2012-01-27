@@ -29,7 +29,6 @@ set ruler		" show the cursor position all the time
 set showcmd		" display incomplete commands
 set incsearch		" do incremental searching
 set shortmess+=I	" don't display the Vim intro at startup
-set smarttab		" <Tab> adapts to autoindent settings
 set laststatus=2	" always show the status line
 
 " For Win32 GUI: remove 't' flag from 'guioptions': no tearoff menu entries
