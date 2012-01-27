@@ -9,6 +9,7 @@ if [ "$SHLVL" = 1 ]; then
 	# don't bother clearing a pseudo-terminal
 	case `tty` in
 	/dev/pts/*) ;;
+	/dev/tty[p-zP-Za-eA-E][0-9A-Za-z]) ;;
 	*)          [ -x /usr/bin/clear ] && /usr/bin/clear ;;
 	esac
     fi
