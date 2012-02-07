@@ -8,30 +8,30 @@ unalias *
 
 if ($?tcsh && $?prompt) then
 
-	# make tcsh behavior a little closer to that of bash
-	bindkey "^R" i-search-back
-	set autolist = ambiguous
-	set symlinks = ignore
-	set nonomatch
+    # make tcsh behavior a little closer to that of bash
+    bindkey "^R" i-search-back
+    set autolist = ambiguous
+    set symlinks = ignore
+    set nonomatch
 
-	set histdup = prev
-	set history = (1000 "%h\t%W/%D/%Y %p\t%R\n")
-	set savehist = (1000 merge)
+    set histdup = prev
+    set history = (1000 "%h\t%W/%D/%Y %p\t%R\n")
+    set savehist = (1000 merge)
 
-	set prompt = "%n@%m:%~%# "
-	set promptchars = '$#'
+    set prompt = "%n@%m:%~%# "
+    set promptchars = '$#'
 
-	if ($?TERM) then
-		switch ($TERM)
-		case xterm*:
-			set prompt = "%{\033]0;%n@%m: %~\007%}$prompt"
-			breaksw
-		case screen*:
-			set prompt = "%{\033_%n@%m: %~\033\\%}$prompt"
-			breaksw
-		endsw
-	endif
+    if ($?TERM) then
+        switch ($TERM)
+        case xterm*:
+            set prompt = "%{\033]0;%n@%m: %~\007%}$prompt"
+            breaksw
+        case screen*:
+            set prompt = "%{\033_%n@%m: %~\033\\%}$prompt"
+            breaksw
+        endsw
+    endif
 
-	setenv COLUMNS
-	setenv LINES
+    setenv COLUMNS
+    setenv LINES
 endif

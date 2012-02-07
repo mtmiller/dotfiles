@@ -24,10 +24,10 @@ shopt -s extglob progcomp
 # Load completion definitions from the directory specified above.
 if [ -d "$BASH_COMPLETION_USER_DIR" ]; then
     for i in "$BASH_COMPLETION_USER_DIR"/*; do
-	case "${i##*/}" in
-	*~|*.bak|*.swp)	;;
-	*)		[ -f "$i" ] && [ -r "$i" ] && . "$i" ;;
-	esac
+        case "${i##*/}" in
+        *~|*.bak|*.swp) ;;
+        *)              [ -f "$i" ] && [ -r "$i" ] && . "$i" ;;
+        esac
     done
 fi
 unset i

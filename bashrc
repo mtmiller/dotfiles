@@ -51,12 +51,12 @@ esac
 
 if [ -n "$force_color_prompt" ]; then
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-	# We have color support; assume it's compliant with Ecma-48
-	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
-	# a case would tend to support setf rather than setaf.)
-	color_prompt=yes
+        # We have color support; assume it's compliant with Ecma-48
+        # (ISO/IEC-6429). (Lack of such support is extremely rare, and such
+        # a case would tend to support setf rather than setaf.)
+        color_prompt=yes
     else
-	color_prompt=
+        color_prompt=
     fi
 fi
 
@@ -87,38 +87,38 @@ case "$TERM" in
     # GNU ls and dircolors are both part of coreutils, prefer this option.
     # Fall back to colorls for *BSD.
     if [ -x /usr/bin/dircolors ]; then
-	if [ -r ~/.dircolors ]; then
-	    # be backwards-compatible: attempt to detect newer keywords not
-	    # understood by the available version of dircolors and filter
-	    # them out
-	    errs=$(dircolors -b ~/.dircolors 2>&1 > /dev/null)
-	    bad=$(echo "$errs" | sed -n 's/^.*: unrecognized keyword \(.*\)$/\1/p')
-	    if [ "$bad" ]; then
-		fix='fgrep -v "$bad"'
-		# special case: if dircolors doesn't understand RESET fall
-		# back to using NORMAL and FILE
-		for word in $bad; do
-		    case "$word" in
-		    RESET) fix="sed 's/^RESET.*$/NORMAL 00\nFILE 00/' | $fix"
-		    esac
-		done
-		eval "$(cat ~/.dircolors | eval $fix | dircolors -b -)"
-	    else
-		eval "$(dircolors -b ~/.dircolors)"
-	    fi
-	    unset bad errs fix word
-	else
-	    eval "$(dircolors -b)"
-	fi
-	alias ls='ls --color=auto'
-	#alias dir='dir --color=auto'
-	#alias vdir='vdir --color=auto'
+        if [ -r ~/.dircolors ]; then
+            # be backwards-compatible: attempt to detect newer keywords not
+            # understood by the available version of dircolors and filter
+            # them out
+            errs=$(dircolors -b ~/.dircolors 2>&1 > /dev/null)
+            bad=$(echo "$errs" | sed -n 's/^.*: unrecognized keyword \(.*\)$/\1/p')
+            if [ "$bad" ]; then
+                fix='fgrep -v "$bad"'
+                # special case: if dircolors doesn't understand RESET fall
+                # back to using NORMAL and FILE
+                for word in $bad; do
+                    case "$word" in
+                    RESET) fix="sed 's/^RESET.*$/NORMAL 00\nFILE 00/' | $fix"
+                    esac
+                done
+                eval "$(cat ~/.dircolors | eval $fix | dircolors -b -)"
+            else
+                eval "$(dircolors -b ~/.dircolors)"
+            fi
+            unset bad errs fix word
+        else
+            eval "$(dircolors -b)"
+        fi
+        alias ls='ls --color=auto'
+        #alias dir='dir --color=auto'
+        #alias vdir='vdir --color=auto'
 
-	#alias grep='grep --color=auto'
-	#alias fgrep='fgrep --color=auto'
-	#alias egrep='egrep --color=auto'
+        #alias grep='grep --color=auto'
+        #alias fgrep='fgrep --color=auto'
+        #alias egrep='egrep --color=auto'
     elif type colorls > /dev/null 2>&1; then
-	alias ls='colorls -G'
+        alias ls='colorls -G'
     fi
     ;;
 esac

@@ -11,7 +11,7 @@ umask 027
 # Add any missing standard directories to the end of PATH in order.
 for dir in /usr/local/bin /usr/bin /bin /usr/local/games /usr/games; do
     if ! echo "$PATH" | egrep '(^|:)'"$dir"'($|:)' > /dev/null 2>&1; then
-	PATH="$PATH:$dir"
+        PATH="$PATH:$dir"
     fi
 done
 
@@ -27,8 +27,8 @@ for cmd in "print catdir('$HOME', qw(lib perl5))" \
            "print catdir('$HOME', qw(lib perl5), \$Config{archname})"; do
     dir=$(perl -MConfig -MFile::Spec::Functions -e "$cmd" 2> /dev/null)
     if [ -n "$dir" ]; then
-	PERL5LIB="$dir${PERL5LIB:+:$PERL5LIB}"
-	export PERL5LIB
+        PERL5LIB="$dir${PERL5LIB:+:$PERL5LIB}"
+        export PERL5LIB
     fi
 done
 
@@ -61,8 +61,8 @@ dir=$(ruby -rrubygems -e "$cmd" 2> /dev/null)
 if [ -n "$dir" ] && [ -d "$dir" ]; then
     # Make sure bin directory is not a duplicate in PATH.
     if ! echo "$PATH" | egrep '(^|:)'"$dir"'($|:)' > /dev/null 2>&1; then
-	# Put this directory at the front of PATH, but after ~/bin if present.
-	PATH=$(echo "$PATH" | sed -e 's,^\(.*'"$HOME/bin"':\)\?,\1'"$dir:,")
+        # Put this directory at the front of PATH, but after ~/bin if present.
+        PATH=$(echo "$PATH" | sed -e 's,^\(.*'"$HOME/bin"':\)\?,\1'"$dir:,")
     fi
 fi
 unset cmd dir ver
@@ -79,7 +79,7 @@ for util in less more; do
 done
 if [ -n "$DISPLAY" ]; then
     for util in google-chrome chromium-browser firefox; do
-	type $util > /dev/null 2>&1 && BROWSER=$util && break
+        type $util > /dev/null 2>&1 && BROWSER=$util && break
     done
 fi
 for util in w3m; do
