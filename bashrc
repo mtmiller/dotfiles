@@ -94,7 +94,7 @@ case "$TERM" in
             errs=$(dircolors -b ~/.dircolors 2>&1 > /dev/null)
             bad=$(echo "$errs" | sed -n 's/^.*: unrecognized keyword \(.*\)$/\1/p')
             if [ "$bad" ]; then
-                fix='fgrep -v "$bad"'
+                fix='grep -F -v "$bad"'
                 # special case: if dircolors doesn't understand RESET fall
                 # back to using NORMAL and FILE
                 for word in $bad; do

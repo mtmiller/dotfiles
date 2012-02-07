@@ -10,7 +10,7 @@ umask 027
 
 # Add any missing standard directories to the end of PATH in order.
 for dir in /usr/local/bin /usr/bin /bin /usr/local/games /usr/games; do
-    if ! echo "$PATH" | egrep '(^|:)'"$dir"'($|:)' > /dev/null 2>&1; then
+    if ! echo "$PATH" | grep -E '(^|:)'"$dir"'($|:)' > /dev/null 2>&1; then
         PATH="$PATH:$dir"
     fi
 done
@@ -60,7 +60,7 @@ cmd='puts Gem.bindir'
 dir=$(ruby -rrubygems -e "$cmd" 2> /dev/null)
 if [ -n "$dir" ] && [ -d "$dir" ]; then
     # Make sure bin directory is not a duplicate in PATH.
-    if ! echo "$PATH" | egrep '(^|:)'"$dir"'($|:)' > /dev/null 2>&1; then
+    if ! echo "$PATH" | grep -E '(^|:)'"$dir"'($|:)' > /dev/null 2>&1; then
         # Put this directory at the front of PATH, but after ~/bin if present.
         PATH=$(echo "$PATH" | sed -e 's,^\(.*'"$HOME/bin"':\)\?,\1'"$dir:,")
     fi
