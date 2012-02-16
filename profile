@@ -41,9 +41,10 @@ fi
 # Configure user Perl library paths.
 # Assume Perl modules are installed as perl Makefile.PL INSTALL_BASE=~ or
 # perl Build.PL --install_base ~
-for cmd in "print catdir('$HOME', qw(lib perl5))" \
-           "print catdir('$HOME', qw(lib perl5), \$Config{archname})"; do
-    dir=$(perl -MConfig -MFile::Spec::Functions -e "$cmd" 2> /dev/null)
+cmd="use Config; use File::Spec::Functions"
+cmd="$cmd; print catdir('$HOME', qw(lib perl5)), ' '"
+cmd="$cmd; print catdir('$HOME', qw(lib perl5), \$Config{archname}), ' '"
+for dir in `perl -e "$cmd" 2> /dev/null`; do
     if [ -n "$dir" ]; then
         __list_prepend_uniq PERL5LIB "$dir"
         export PERL5LIB
@@ -54,11 +55,12 @@ done
 # Assume Python packages are installed as python setup.py install --prefix=~
 cmd="from distutils import sysconfig"
 cmd="$cmd; print sysconfig.get_python_lib(0,0,prefix='$HOME')"
-dir=$(python -c "$cmd" 2> /dev/null)
-if [ -n "$dir" ]; then
-    __list_prepend_uniq PYTHONPATH "$dir"
-    export PYTHONPATH
-fi
+for dir in `python -c "$cmd" 2> /dev/null`; do
+    if [ -n "$dir" ]; then
+        __list_prepend_uniq PYTHONPATH "$dir"
+        export PYTHONPATH
+    fi
+done
 
 # Configure personal RubyGems environment and add bin directory to PATH.
 cmd='puts (defined?(RbConfig) ? RbConfig : Config)::CONFIG["ruby_version"]'
