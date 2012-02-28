@@ -36,9 +36,6 @@ if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
 fi
 
-# Fix TERM using helper command if available
-type fix-term-env > /dev/null 2>&1 && eval `fix-term-env`
-
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
     xterm-color) color_prompt=yes;;
