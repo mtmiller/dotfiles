@@ -1,0 +1,26 @@
+# -*- mode: perl -*- vi:set ft=perl:
+
+use strict;
+use warnings;
+
+load_plugin qw(
+    FancyPrompt
+    History
+    LexEnv
+    MultiLine::PPI
+    Packages
+);
+
+$_REPL->term->ornaments(0);
+
+$_REPL->fancy_continuation_prompt(sub {
+        my $self = shift;
+        my $indent = ' ' x 4 x $self->line_depth;
+        sprintf 're.pl(%s):%03d:%d> %s',
+                $self->current_package,
+                $self->lines_read,
+                $self->line_depth,
+                $indent;
+});
+
+package main;
