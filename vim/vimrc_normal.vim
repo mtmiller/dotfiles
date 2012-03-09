@@ -47,7 +47,7 @@ endif
 " http://github.com/tpope/vim-pathogen
 let s:pluginpath = 'pathogen#'
 if v:version >= 700
-  call {s:pluginpath}runtime_append_all_bundles()
+  call {s:pluginpath}infect()
   call {s:pluginpath}helptags()
 endif
 
