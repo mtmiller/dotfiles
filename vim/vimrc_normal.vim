@@ -2,7 +2,7 @@
 "
 " Maintainer:		Mike Miller
 " Original Author:	Bram Moolenaar <Bram@vim.org>
-" Last Change:		2011-02-28
+" Last Change:		2012-03-12
 "
 " Install in the runtime path (e.g. ~/.vim) to be found by ~/.vimrc.
 " This file is sourced only for Vim normal, big, or huge.
@@ -30,9 +30,6 @@ set showcmd		" display incomplete commands
 set incsearch		" do incremental searching
 set shortmess+=I	" don't display the Vim intro at startup
 set laststatus=2	" always show the status line
-
-" For Win32 GUI: remove 't' flag from 'guioptions': no tearoff menu entries
-" let &guioptions = substitute(&guioptions, "t", "", "g")
 
 " CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
 " so that you can undo CTRL-U after inserting a line break.
