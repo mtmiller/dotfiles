@@ -30,6 +30,7 @@ set showcmd		" display incomplete commands
 set incsearch		" do incremental searching
 set shortmess+=I	" don't display the Vim intro at startup
 set laststatus=2	" always show the status line
+set visualbell t_vb=	" no beeping or visual bell whatsoever
 
 " CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
 " so that you can undo CTRL-U after inserting a line break.
@@ -140,6 +141,10 @@ if has("gui")
   " Override default less options for a chance of working in the GUI
   " (e.g. :shell command or man page lookup)
   autocmd GUIEnter * let $LESS = $LESS . 'dr'
+
+  " Turn off visual bell feedback, needs to be done after the GUI starts.
+  autocmd GUIEnter * set t_vb=
+
   augroup END
 
 endif
