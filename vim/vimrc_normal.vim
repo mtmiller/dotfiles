@@ -49,6 +49,16 @@ if v:version >= 700
   call {s:pluginpath}helptags()
 endif
 
+" Shortcut to display/hide the NERDTree window.  Needs to be done after Vim is
+" done initializing.
+augroup vimInitCommands
+au!
+autocmd VimEnter *
+  \ if exists(":NERDTreeToggle") |
+  \    map <Leader>d :NERDTreeToggle<CR> |
+  \ endif
+augroup END
+
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
 if &t_Co > 2 || has("gui_running")
