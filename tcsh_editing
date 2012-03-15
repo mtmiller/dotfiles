@@ -1,0 +1,63 @@
+# ~/.tcsh_editing -*- mode: sh -*- vi:set ft=tcsh:
+# Configure the tcsh command-line editor, similar to ~/.inputrc.
+
+# No terminal bell on completion
+set nobeep
+
+# Only list completions when no new characters are added
+set autolist = ambiguous
+
+# Use the readline concept of a word, i.e. no non-alphanumeric characters
+set wordchars = ""
+
+# Set default editing mode to emacs
+bindkey -e
+
+# Common sense bindings
+bindkey "^R" i-search-back
+bindkey "^U" backward-kill-line
+bindkey "^W" backward-delete-word
+bindkey "\e." insert-last-word
+
+# Default key bindings are for PC keyboard on a Linux console, Xterm, or
+# GNOME VTE.
+
+# VT100 ANSI cursor movement
+bindkey "\e[A" up-history
+bindkey "\e[B" down-history
+bindkey "\e[C" forward-char
+bindkey "\e[D" backward-char
+
+# VT100 keypad application mode cursor movement
+bindkey "\eOA" up-history
+bindkey "\eOB" down-history
+bindkey "\eOC" forward-char
+bindkey "\eOD" backward-char
+
+# Xterm Home/End "cursor" keys in normal mode
+bindkey "\e[H" beginning-of-line
+bindkey "\e[F" end-of-line
+
+# Xterm Home/End "cursor" keys in cursor application mode
+bindkey "\eOH" beginning-of-line
+bindkey "\eOF" end-of-line
+
+# VT220 Find/Select -> Linux console Home/End and GNOME VTE keypad Home/End
+bindkey "\e[1~" beginning-of-line
+bindkey "\e[4~" end-of-line
+
+# VT220 Insert/Delete -> PC Insert/Delete
+bindkey "\e[2~" quoted-insert
+bindkey "\e[3~" delete-char
+
+# VT220 Prev/Next -> PC PageUp/PageDown
+bindkey "\e[5~" up-history
+bindkey "\e[6~" down-history
+
+# Xterm control-modified cursor keys
+bindkey "\e[1;5C" forward-word
+bindkey "\e[1;5D" backward-word
+
+# GNOME VTE control-modified cursor keys versions older than 0.15.0
+bindkey "\e[5C" forward-word
+bindkey "\e[5D" backward-word

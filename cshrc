@@ -8,9 +8,11 @@ unalias *
 
 if ($?tcsh && $?prompt) then
 
+    if ( -r ~/.tcsh_editing ) then
+        source ~/.tcsh_editing
+    endif
+
     # make tcsh behavior a little closer to that of bash
-    bindkey "^R" i-search-back
-    set autolist = ambiguous
     set symlinks = ignore
     set nonomatch
 

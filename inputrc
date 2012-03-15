@@ -1,0 +1,57 @@
+# ~/.inputrc - user configuration for readline
+
+# No terminal bell on completion
+set bell-style none
+
+# Be 8 bit clean
+set input-meta on
+set output-meta on
+set convert-meta off
+set byte-oriented off
+
+# Default editing and key binding mode
+set editing-mode emacs
+set keymap emacs
+
+# Default key bindings are for PC keyboard on a Linux console, Xterm, or
+# GNOME VTE.
+
+# VT100 ANSI cursor movement
+"\e[A": previous-history
+"\e[B": next-history
+"\e[C": forward-char
+"\e[D": backward-char
+
+# VT100 keypad application mode cursor movement
+"\eOA": previous-history
+"\eOB": next-history
+"\eOC": forward-char
+"\eOD": backward-char
+
+# Xterm Home/End "cursor" keys in normal mode
+"\e[H": beginning-of-line
+"\e[F": end-of-line
+
+# Xterm Home/End "cursor" keys in cursor application mode
+"\eOH": beginning-of-line
+"\eOF": end-of-line
+
+# VT220 Find/Select -> Linux console Home/End and GNOME VTE keypad Home/End
+"\e[1~": beginning-of-line
+"\e[4~": end-of-line
+
+# VT220 Insert/Delete -> PC Insert/Delete
+"\e[2~": quoted-insert
+"\e[3~": delete-char
+
+# VT220 Prev/Next -> PC PageUp/PageDown
+"\e[5~": beginning-of-history
+"\e[6~": end-of-history
+
+# Xterm control-modified cursor keys
+"\e[1;5C": forward-word
+"\e[1;5D": backward-word
+
+# GNOME VTE control-modified cursor keys versions older than 0.15.0
+"\e[5C": forward-word
+"\e[5D": backward-word

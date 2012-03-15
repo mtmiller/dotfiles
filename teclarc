@@ -1,0 +1,54 @@
+# ~/.teclarc - user configuration for tecla
+
+# No terminal bell on completion
+nobeep
+
+# Default editing and key binding mode
+edit-mode emacs
+
+# Common-sense bindings that have different defaults under tecla.
+bind ^U backward-kill-line
+bind ^W backward-delete-word
+
+# Default key bindings are for PC keyboard on a Linux console, Xterm, or
+# GNOME VTE.
+
+# VT100 ANSI cursor movement
+bind \e[A up-history
+bind \e[B down-history
+bind \e[C cursor-right
+bind \e[D cursor-left
+
+# VT100 keypad application mode cursor movement
+bind \eOA up-history
+bind \eOB down-history
+bind \eOC cursor-right
+bind \eOD cursor-left
+
+# Xterm Home/End "cursor" keys in normal mode
+bind \e[H beginning-of-line
+bind \e[F end-of-line
+
+# Xterm Home/End "cursor" keys in cursor application mode
+bind \eOH beginning-of-line
+bind \eOF end-of-line
+
+# VT220 Find/Select -> Linux console Home/End and GNOME VTE keypad Home/End
+bind \e[1~ beginning-of-line
+bind \e[4~ end-of-line
+
+# VT220 Insert/Delete -> PC Insert/Delete
+bind \e[2~ literal-next
+bind \e[3~ forward-delete-char
+
+# VT220 Prev/Next -> PC PageUp/PageDown
+bind \e[5~ beginning-of-history
+bind \e[6~ end-of-history
+
+# Xterm control-modified cursor keys
+bind \e[1;5C forward-word
+bind \e[1;5D backward-word
+
+# GNOME VTE control-modified cursor keys versions older than 0.15.0
+bind \e[5C forward-word
+bind \e[5D backward-word
