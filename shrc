@@ -1,0 +1,120 @@
+# ~/.shrc -*- mode: sh -*- vi:set ft=sh:
+# Shell environment configuration for POSIX-compliant command interpreters.
+# This file is intended to be executed from within ~/.profile or another
+# shell initialization file (such as ~/.bashrc).
+
+# Set my default semi-paranoid umask before anything else
+umask 027
+
+__list_contains() {
+    eval "echo \"\$$1\" | grep -E '(^|:)$2($|:)' > /dev/null 2>&1"
+}
+
+__list_append() {
+    eval "$1=\${$1:+\$$1:}$2"
+}
+
+__list_prepend() {
+    eval "$1=$2\${$1:+:\$$1}"
+}
+
+__list_append_uniq() {
+    __list_contains "$@" || __list_append "$@" || :
+}
+
+__list_prepend_uniq() {
+    __list_contains "$@" || __list_prepend "$@" || :
+}
+
+# Add any missing standard directories to the end of PATH in order.
+for dir in /usr/local/bin /usr/bin /bin /usr/local/games /usr/games; do
+    __list_append_uniq PATH "$dir"
+done
+
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/bin" ] ; then
+    __list_prepend_uniq PATH "$HOME/bin"
+fi
+
+# Configure user Perl library paths.
+# Assume Perl modules are installed as perl Makefile.PL INSTALL_BASE=~ or
+# perl Build.PL --install_base ~
+cmd="use Config; use File::Spec::Functions"
+cmd="$cmd; print catdir('$HOME', qw(lib perl5)), ' '"
+cmd="$cmd; print catdir('$HOME', qw(lib perl5), \$Config{archname}), ' '"
+for dir in `perl -e "$cmd" 2> /dev/null`; do
+    if [ -n "$dir" ]; then
+        __list_prepend_uniq PERL5LIB "$dir"
+        export PERL5LIB
+    fi
+done
+
+# Configure user Python library paths.
+# Assume Python packages are installed as python setup.py install --prefix=~
+cmd="from distutils import sysconfig"
+cmd="$cmd; print sysconfig.get_python_lib(0,0,prefix='$HOME')"
+for dir in `python -c "$cmd" 2> /dev/null`; do
+    if [ -n "$dir" ]; then
+        __list_prepend_uniq PYTHONPATH "$dir"
+        export PYTHONPATH
+    fi
+done
+
+# Configure personal RubyGems environment and add bin directory to PATH.
+cmd='puts (defined?(RbConfig) ? RbConfig : Config)::CONFIG["ruby_version"]'
+ver=$(ruby -rrbconfig -e "$cmd" 2> /dev/null)
+if [ -n "$ver" ]; then
+    GEM_HOME="$HOME/.gem/ruby/$ver"
+    GEM_PATH="$GEM_HOME"
+    export GEM_HOME GEM_PATH
+fi
+cmd='puts Gem.default_dir'
+dir=$(ruby -rrubygems -e "$cmd" 2> /dev/null)
+if [ -n "$dir" ] && [ -d "$dir" ]; then
+    __list_append_uniq GEM_PATH "$dir"
+    export GEM_PATH
+fi
+cmd='puts Gem.bindir'
+dir=$(ruby -rrubygems -e "$cmd" 2> /dev/null)
+if [ -n "$dir" ] && [ -d "$dir" ]; then
+    if ! __list_contains PATH "$dir"; then
+        # Put this directory at the front of PATH, but after ~/bin if present.
+        PATH=$(echo "$PATH" | sed -e 's,^\(.*'"$HOME/bin"':\)\?,\1'"$dir:,")
+    fi
+fi
+unset cmd dir ver
+
+# Set default text editor, pager, and web browser.
+for util in vimx vim vi ex ed; do
+    type $util > /dev/null 2>&1 && EDITOR=$util && break
+done
+for util in vimx vim vi; do
+    type $util > /dev/null 2>&1 && VISUAL=$util && break
+done
+for util in less more; do
+    type $util > /dev/null 2>&1 && PAGER=$util && break
+done
+if [ -n "$DISPLAY" ]; then
+    for util in google-chrome chromium-browser firefox; do
+        type $util > /dev/null 2>&1 && BROWSER=$util && break
+    done
+fi
+for util in w3m; do
+    type $util > /dev/null 2>&1 && __list_append_uniq BROWSER "$util" && break
+done
+[ -n "$EDITOR"  ] && export EDITOR  || unset EDITOR
+[ -n "$VISUAL"  ] && export VISUAL  || unset VISUAL
+[ -n "$PAGER"   ] && export PAGER   || unset PAGER
+[ -n "$BROWSER" ] && export BROWSER || unset BROWSER
+unset util
+if [ "$PAGER" = less ]; then
+    LESS=iFRSX
+    MANPAGER='less -s'
+    export LESS MANPAGER
+fi
+if [ -n "$EDITOR" ]; then
+    FCEDIT="$EDITOR"
+    export FCEDIT
+fi
+
+unset __list_contains __list_append __list_append_uniq __list_prepend __list_prepend_uniq
