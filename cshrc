@@ -37,3 +37,7 @@ if ($?tcsh && $?prompt) then
     setenv COLUMNS
     setenv LINES
 endif
+
+if ( -r ~/.cshrc.local ) then
+    source ~/.cshrc.local
+endif

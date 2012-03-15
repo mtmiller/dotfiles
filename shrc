@@ -118,3 +118,7 @@ if [ -n "$EDITOR" ]; then
 fi
 
 unset __list_contains __list_append __list_append_uniq __list_prepend __list_prepend_uniq
+
+if [ -r "$HOME/.shrc.local" ]; then
+    . "$HOME/.shrc.local"
+fi
