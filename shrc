@@ -84,6 +84,11 @@ if [ -n "$dir" ] && [ -d "$dir" ]; then
 fi
 unset cmd dir ver
 
+# Configure Perl locale, see perlrun(1).
+case `locale charmap 2> /dev/null` in
+UTF-8) PERL_UNICODE=SDAL; export PERL_UNICODE ;;
+esac
+
 # Set default text editor, pager, and web browser.
 for util in vimx vim vi ex ed; do
     type $util > /dev/null 2>&1 && EDITOR=$util && break
