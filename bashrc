@@ -97,11 +97,13 @@ case "$TERM" in
             bad=$(echo "$errs" | sed -n 's/^.*: unrecognized keyword \(.*\)$/\1/p')
             if [ "$bad" ]; then
                 fix='grep -F -v "$bad"'
-                # special case: if dircolors doesn't understand RESET fall
-                # back to using NORMAL and FILE
+                # special cases:
+                # - if dircolors doesn't know RESET, use NORMAL and FILE
+                # - if dircolors doesn't know OTHER_WRITABLE, remove SET[GU]ID
                 for word in $bad; do
                     case "$word" in
-                    RESET) fix="sed 's/^RESET.*$/NORMAL 00\nFILE 00/' | $fix"
+                    RESET) fix="sed 's/^RESET.*$/NORMAL 00\nFILE 00/' | $fix" ;;
+                    *OTHER*) fix="grep -v 'SET[GU]ID' | $fix" ;;
                     esac
                 done
                 eval "$(cat ~/.dircolors | eval $fix | dircolors -b -)"
