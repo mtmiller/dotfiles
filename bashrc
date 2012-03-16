@@ -90,9 +90,9 @@ case "$TERM" in
         fi
         alias ls='ls --color=auto'
 
-        #alias grep='grep --color=auto'
-        #alias fgrep='fgrep --color=auto'
-        #alias egrep='egrep --color=auto'
+        alias grep='grep --color=auto'
+        alias fgrep='fgrep --color=auto'
+        alias egrep='egrep --color=auto'
     elif type colorls > /dev/null 2>&1; then
         alias ls='colorls -G'
     fi
