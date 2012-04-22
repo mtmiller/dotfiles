@@ -9,6 +9,10 @@ set output-meta on
 set convert-meta off
 set byte-oriented off
 
+# Trailing slash on directories and symlinks to directories
+set mark-directories on
+set mark-symlinked-directories on
+
 # Default editing and key binding mode
 set editing-mode emacs
 set keymap emacs
