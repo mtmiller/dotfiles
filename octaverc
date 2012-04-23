@@ -1,11 +1,19 @@
 # ~/.octaverc: Octave per-user initialization file.
 
 # If Octave is running in a known terminal emulator set the title.
-term_title = sprintf('GNU Octave %s', version());
-if regexp(getenv('TERM'), '^xterm')
-  PS1(sprintf('\\[\\033]0;%s\\007\\]%s', term_title, PS1()));
+term_title = ["GNU Octave " version];
+if regexp(getenv("TERM"), "^xterm")
+  PS1(["\\[\\033]0;" term_title "\\007\\]" PS1]);
 end
 clear term_title
 
 # Add ~/octave (and all subdirectories) to the Octave load path.
-addpath(genpath('~/octave'));
+addpath(genpath("~/octave"));
+
+# Set up Octave editor.
+if getenv("DISPLAY")
+  edit editor "gvim %s"
+  edit mode async
+else
+  edit mode sync
+endif
