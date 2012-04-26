@@ -1,0 +1,19 @@
+# ~/.lintianrc
+#
+# Set the default profile (--profile)
+LINTIAN_PROFILE = debian
+
+# Enable info tags by default (--display info)
+display-info = yes
+
+# Enable pedantic tags by default (--pedantic)
+pedantic = yes
+
+# Enable experimental tags by default (--display-experimental)
+display-experimental = yes
+
+# Enable colored output for terminal output (--color)
+color = auto
+
+# Show overridden tags (--show-overrides)
+show-overrides = yes
