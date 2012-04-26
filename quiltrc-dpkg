@@ -1,0 +1,13 @@
+# ~/.quiltrc-dpkg -*- mode: sh -*- vi:set ft=sh:
+# Debian-packaging-specific quilt configuration
+# Adapted from the Debian New Maintainers' Guide
+
+d=. ; while [ ! -d $d/debian -a `readlink -e $d` != / ]; do d=$d/..; done
+if [ -d $d/debian ] && [ -z "$QUILT_PATCHES" ]; then
+    QUILT_PATCHES="debian/patches"
+    if ! [ -d "$d/$QUILT_PATCHES" ]; then mkdir "$d/$QUILT_PATCHES"; fi
+fi
+
+if [ -e "$HOME/.quiltrc" ]; then
+    . "$HOME/.quiltrc"
+fi

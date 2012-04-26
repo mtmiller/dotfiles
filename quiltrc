@@ -1,0 +1,24 @@
+# ~/.quiltrc -*- mode: sh -*- vi:set ft=sh:
+# User configuration file for quilt
+
+# Options passed to quilt commands
+QUILT_DIFF_ARGS="-p ab --no-index --no-timestamps --color=auto"
+QUILT_NEW_ARGS="-p ab"
+QUILT_PATCHES_ARGS="--color=auto"
+QUILT_PUSH_ARGS="--color=auto"
+QUILT_REFRESH_ARGS="-p ab --no-index --no-timestamps --backup"
+QUILT_SERIES_ARGS="--color=auto"
+
+# Options passed to external commands (diff, patch)
+QUILT_DIFF_OPTS="-p"
+QUILT_PATCH_OPTS="-u"
+
+# Quilt patch directory and series file defaults
+: ${QUILT_PATCHES="patches"}
+: ${QUILT_SERIES="series"}
+
+# Show the patch directory path when listing patch names
+QUILT_PATCHES_PREFIX=yes
+
+# Quilt color overrides
+QUILT_COLORS="diff_hdr=1;37:diff_add=32:diff_rem=31:diff_hunk=35"
