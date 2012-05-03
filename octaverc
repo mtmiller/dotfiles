@@ -2,16 +2,16 @@
 
 # If Octave is running in a known terminal emulator set the title.
 term_title = ["GNU Octave " version];
-if regexp(getenv("TERM"), "^xterm")
-  PS1(["\\[\\033]0;" term_title "\\007\\]" PS1]);
+if regexp (getenv ("TERM"), "^xterm")
+  PS1 (["\\[\\033]0;" term_title "\\007\\]" PS1]);
 end
 clear term_title
 
 # Add ~/octave (and all subdirectories) to the Octave load path.
-addpath(genpath("~/octave"));
+addpath (genpath ("~/octave"));
 
 # Set up Octave editor.
-if getenv("DISPLAY")
+if getenv ("DISPLAY") && file_in_path (getenv ("PATH"), "gvim")
   edit editor "gvim %s"
   edit mode async
 else
