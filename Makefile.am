@@ -80,3 +80,16 @@ uninstall-local:
 	  p=".$$f"; \
 	  rm -f "$$dir/$$p"; \
 	done
+
+.PHONY: compare
+TMPINST = $(CURDIR)/tmp
+compare:
+	$(MAKE) $(AM_MAKEFLAGS) DESTDIR='$(TMPINST)' install
+	@for f in `cd $(TMPINST)$(homedir) && find . -type f -print`; do \
+	  diff=`diff -u "$(TMPINST)$(homedir)/$$f" "$(homedir)/$$f" 2>/dev/null`; \
+	  if test -n "$$diff"; then \
+	    echo "diff -Naur $(TMPINST)$(homedir)/$$f $(homedir)/$$f"; \
+	    echo "$$diff"; \
+	  fi \
+	done
+	@rm -rf '$(TMPINST)'
