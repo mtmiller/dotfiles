@@ -130,11 +130,11 @@ if has("gui")
   " Fonts to use in gvim.  Always have fallbacks, and handle each platform in
   " its own special way, see :help setting-guifont.
   if has("gui_gtk2")
-    set guifont=Liberation\ Mono\ 10,Monospace\ 10
+    set guifont=Inconsolata\ 12,Liberation\ Mono\ 10,Monospace\ 10
   elseif has("x11")
     set guifont=-*-lucidatypewriter-medium-r-normal-*-*-120-*-*-m-*-*
   elseif has("gui_win32")
-    set guifont=Lucida_Console:h9:cANSI,Courier_New:h9:cANSI,Terminal:h9
+    set guifont=Consolas:h10,Lucida_Console:h9,Courier_New:h9,Terminal:h9
   endif
 
   " GUI customizations.  No blinking cursor, no tearoffs, no toolbar.
