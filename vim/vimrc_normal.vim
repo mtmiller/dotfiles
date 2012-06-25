@@ -122,6 +122,7 @@ if has("syntax")
   endif
   let g:fortran_fixed_source = 1
   let g:fortran_have_tabs = 1
+  let g:filetype_m = "octave"
 endif
 
 " Settings specific to using the GUI.
