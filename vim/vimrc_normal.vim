@@ -60,6 +60,9 @@ autocmd VimEnter *
   \ endif
 augroup END
 
+" Configure Vim NERDTree with a useful default ignore list.
+let g:NERDTreeIgnore = ['\.[ao]$', '\.l[ao]$', '\.py[co]$', '\.so$', '\~$']
+
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
 if &t_Co > 2 || has("gui_running")
