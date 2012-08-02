@@ -31,6 +31,7 @@ set incsearch		" do incremental searching
 set shortmess+=I	" don't display the Vim intro at startup
 set laststatus=2	" always show the status line
 set visualbell t_vb=	" no beeping or visual bell whatsoever
+set nojoinspaces	" do not insert two spaces after full stop
 
 " CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
 " so that you can undo CTRL-U after inserting a line break.
