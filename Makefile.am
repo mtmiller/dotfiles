@@ -84,8 +84,9 @@ uninstall-local:
 .PHONY: compare
 TMPINST = $(CURDIR)/tmp
 compare:
-	$(MAKE) $(AM_MAKEFLAGS) DESTDIR='$(TMPINST)' install
+	@$(MAKE) $(AM_MAKEFLAGS) DESTDIR='$(TMPINST)' install > /dev/null
 	@for f in `cd $(TMPINST)$(homedir) && find . -type f -print`; do \
+	  f=`echo $$f | sed 's/^\.\///'`; \
 	  diff=`diff -u "$(TMPINST)$(homedir)/$$f" "$(homedir)/$$f" 2>/dev/null`; \
 	  if test -n "$$diff"; then \
 	    echo "diff -Naur $(TMPINST)$(homedir)/$$f $(homedir)/$$f"; \
