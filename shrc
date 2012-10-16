@@ -31,6 +31,12 @@ for dir in /usr/local/bin /usr/bin /bin /usr/local/games /usr/games; do
     __list_append_uniq PATH "$dir"
 done
 
+# Add standard admin binary directories to the end of PATH in order.
+# Some distributions put very useful utilities into an sbin directory.
+for dir in /usr/local/sbin /usr/sbin /sbin; do
+    __list_append_uniq PATH "$dir"
+done
+
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/bin" ] ; then
     __list_prepend_uniq PATH "$HOME/bin"
