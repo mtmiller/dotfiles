@@ -17,3 +17,11 @@ if getenv ("DISPLAY") && file_in_path (getenv ("PATH"), "gvim")
 else
   edit mode sync
 endif
+
+# Choose Gnuplot terminal based on available.
+[~,s] = system ([gnuplot_binary " -e 'set term' 2>&1 | grep '\\<qt\\> '"]);
+if isempty (s)
+  putenv ("GNUTERM", "x11");
+else
+  putenv ("GNUTERM", "qt");
+endif
