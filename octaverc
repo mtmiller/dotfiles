@@ -25,3 +25,4 @@ if isempty (s)
 else
   putenv ("GNUTERM", "qt");
 endif
+clear s
