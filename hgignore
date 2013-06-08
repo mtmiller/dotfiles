@@ -7,4 +7,6 @@ syntax: glob
 *.sw[nop]
 *~
 .#*
+.pc
+.timestamp
 [#]*#
