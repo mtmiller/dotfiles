@@ -9,9 +9,6 @@ elseif (regexp (getenv ("TERM"), "^xterm"))
 end
 clear term_title
 
-# Add ~/octave (and all subdirectories) to the Octave load path.
-addpath (genpath ("~/octave"));
-
 # Set up Octave editor.
 if getenv ("DISPLAY") && file_in_path (getenv ("PATH"), "gvim")
   edit editor "gvim %s"
