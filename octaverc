@@ -17,6 +17,15 @@ else
   edit mode sync
 endif
 
+# Load my ~/.inputrc to override any conflicting keybindings from Octave.
+readline_read_init_file ("~/.inputrc");
+
+# Save interpreter history with the same settings as for bash.
+history_control ("ignoreboth");
+history_file ("~/.octave_history");
+history_save (true);
+history_size (1000);
+
 # Choose Gnuplot terminal based on available.
 [~,s] = system ([gnuplot_binary " -e 'set term' 2>&1 | grep '\\<qt\\> '"]);
 if isempty (s)
