@@ -25,6 +25,7 @@ history_control ("ignoreboth");
 history_file ("~/.octave_history");
 history_save (true);
 history_size (1000);
+history ("-r", history_file ());
 
 # Choose Gnuplot terminal based on available.
 [~,s] = system ([gnuplot_binary " -e 'set term' 2>&1 | grep '\\<qt\\> '"]);
