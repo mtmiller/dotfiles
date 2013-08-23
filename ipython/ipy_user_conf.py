@@ -13,6 +13,14 @@ def unalias(shell, *args):
             del shell.alias_table[cmd]
 
 
+def import_future_feature(opts, *args):
+    """Import future features into the IPython shell at startup."""
+    import __future__
+    for feature in args:
+        if hasattr(__future__, feature):
+            opts.autoexec.append("from __future__ import " + feature)
+
+
 def main():
     """Configure IPython shell for versions < 0.11."""
     ip = IPython.ipapi.get()
@@ -28,6 +36,12 @@ def main():
             ip.defalias('ls', 'colorls -G')
         else:
             ip.defalias('ls', 'ls --color=auto')
+
+    # Make ipython with python 2.x behave more like 3.x
+    if int(sys.version[0]) < 3:
+        import_future_feature(ip.options, "division",
+                                          "print_function",
+                                          "unicode_literals")
 
 
 main()
