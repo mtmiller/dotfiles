@@ -34,7 +34,7 @@ def import_future_feature(opts, *args):
     import __future__
     for feature in args:
         if hasattr(__future__, feature):
-            opts.autoexec.append("from __future__ import " + feature)
+            opts.autoexec.append('from __future__ import ' + feature)
 
 
 def main():
@@ -57,9 +57,9 @@ def main():
 
     # Make ipython with python 2.x behave more like 3.x
     if int(sys.version[0]) < 3:
-        import_future_feature(ip.options, "division",
-                                          "print_function",
-                                          "unicode_literals")
+        import_future_feature(ip.options, 'division',
+                                          'print_function',
+                                          'unicode_literals')
 
 
 main()
