@@ -18,12 +18,18 @@ else
 endif
 
 # Load my ~/.inputrc to override any conflicting keybindings from Octave.
-readline_read_init_file ("~/.inputrc");
+if (exist ("readline_read_init_file") == 5)
+  readline_read_init_file ("~/.inputrc");
+else
+  read_readline_init_file ("~/.inputrc");
+endif
 
 # Save interpreter history with the same settings as for bash.
 history_control ("ignoreboth");
 history_file ("~/.octave_history");
-history_save (true);
+if (exist ("history_save") == 5)
+  history_save (true);
+endif
 history_size (1000);
 history ("-r", history_file ());
 
