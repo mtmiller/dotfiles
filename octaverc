@@ -31,7 +31,9 @@ if (exist ("history_save") == 5)
   history_save (true);
 endif
 history_size (1000);
-history ("-r", history_file ());
+if (exist (history_file ()))
+  history ("-r", history_file ());
+endif
 
 # Set up plotting preferences, but only if we're graphical.
 if (getenv ("DISPLAY"))
