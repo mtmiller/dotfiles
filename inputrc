@@ -20,6 +20,10 @@ set keymap emacs
 # Default key bindings are for PC keyboard on a Linux console, Xterm, or
 # GNOME VTE.
 
+# Repeat some readline defaults explicitly to prevent being overridden.
+"\C-l": clear-screen
+"\C-v": quoted-insert
+
 # VT100 ANSI cursor movement
 "\e[A": previous-history
 "\e[B": next-history
