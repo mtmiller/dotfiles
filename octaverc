@@ -33,14 +33,19 @@ endif
 history_size (1000);
 history ("-r", history_file ());
 
-# Choose Gnuplot terminal based on available.
-[~,s] = system ([gnuplot_binary " -e 'set term' 2>&1 | grep '\\<qt\\> '"]);
-if isempty (s)
-  putenv ("GNUTERM", "x11");
-else
-  putenv ("GNUTERM", "qt");
-endif
-clear s
+# Set up plotting preferences, but only if we're graphical.
+if (getenv ("DISPLAY"))
 
-# Use FLTK for plotting by default.
-graphics_toolkit ("fltk");
+  # Use FLTK for plotting by default.
+  graphics_toolkit ("fltk");
+
+  # Choose Gnuplot terminal based on available.
+  [~,s] = system ([gnuplot_binary " -e 'set term' 2>&1 | grep '\\<qt\\> '"]);
+  if isempty (s)
+    putenv ("GNUTERM", "x11");
+  else
+    putenv ("GNUTERM", "qt");
+  endif
+  clear s
+
+endif
