@@ -63,3 +63,11 @@ set keymap emacs
 # GNOME VTE control-modified cursor keys versions older than 0.15.0
 "\e[5C": forward-word
 "\e[5D": backward-word
+
+# rxvt control-modified cursor keys
+"\eOc": forward-word
+"\eOd": backward-word
+
+# rxvt Home/End "cursor" keys
+"\e[7~": beginning-of-line
+"\e[8~": end-of-line
