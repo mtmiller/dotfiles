@@ -3,9 +3,9 @@
 # If Octave is running in a known terminal emulator set the title.
 term_title = ["GNU Octave " version];
 if (exist ("isguirunning") && isguirunning ())
-  PS1 ("\\s:\\#> ");
+  PS1 ("octave:\\#> ");
 elseif (regexp (getenv ("TERM"), "^xterm"))
-  PS1 (["\\[\\033]0;" term_title "\\007\\]\\s:\\#> "]);
+  PS1 (["\\[\\033]0;" term_title "\\007\\033[32m\\]octave:\\#>\\[\\033[00m\\] "]);
 end
 clear term_title
 
