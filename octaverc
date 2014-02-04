@@ -4,8 +4,10 @@
 term_title = ["GNU Octave " version];
 if (exist ("isguirunning") && isguirunning ())
   PS1 ("octave:\\#> ");
-elseif (regexp (getenv ("TERM"), "^xterm"))
+elseif (regexp (getenv ("TERM"), "^(rxvt|xterm)"))
   PS1 (["\\[\\033]0;" term_title "\\007\\033[32m\\]octave:\\#>\\[\\033[00m\\] "]);
+else
+  PS1 ("octave:\\#> ");
 end
 clear term_title
 
