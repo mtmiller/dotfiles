@@ -1,0 +1,10 @@
+# ~/.sbuildrc
+
+# Run lintian after successful builds.
+$run_lintian = 1;
+
+# Options to pass to lintian.  Each option is a separate arrayref element.
+$lintian_opts = ['-I', '-E', '--pedantic', '--color=auto'];
+
+# don't remove this, Perl needs it:
+1;

@@ -26,6 +26,7 @@ dotfiles = \
  quiltrc \
  quiltrc-dpkg \
  re.pl/repl.rc \
+ sbuildrc \
  shrc \
  ssh/config \
  tcsh_editing \
