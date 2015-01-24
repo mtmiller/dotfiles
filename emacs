@@ -12,3 +12,5 @@
   '(require-final-newline 'query)
   '(ring-bell-function 'ignore)
   '(scroll-bar-mode 'right))
+
+(add-to-list 'default-frame-alist '(font . "Inconsolata-11"))
