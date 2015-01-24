@@ -1,6 +1,7 @@
 NULL =
 homedir = $(prefix)
 dotfiles = \
+ Xresources \
  bash_completion \
  bash_logout \
  bash_profile \
