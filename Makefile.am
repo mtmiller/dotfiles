@@ -30,6 +30,7 @@ dotfiles = \
  ssh/config \
  tcsh_editing \
  teclarc \
+ tmux.conf \
  vim/after/ftplugin/c.vim \
  vim/after/ftplugin/fortran.vim \
  vim/after/ftplugin/perl.vim \
