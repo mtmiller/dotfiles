@@ -27,6 +27,7 @@ c.InteractiveShell.autoindent = True
 c.InteractiveShell.colors = 'Linux'
 c.InteractiveShell.confirm_exit = False
 c.InteractiveShellApp.exec_lines = []
+c.InteractiveShellApp.pylab_import_all = False
 
 c.AliasManager.default_aliases = []
 c.AliasManager.user_aliases = []
