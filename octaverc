@@ -27,7 +27,9 @@ else
 endif
 
 # Save interpreter history with the same settings as for bash.
-history_control ("ignoreboth");
+if (exist ("history_control") == 5)
+  history_control ("ignoreboth");
+endif
 history_file ("~/.octave_history");
 if (exist ("history_save") == 5)
   history_save (true);
@@ -41,21 +43,23 @@ endif
 if (getenv ("DISPLAY"))
 
   # Use Qt or FLTK for plotting by default if available.
-  if (any (cell2mat (strfind (available_graphics_toolkits (), "qt"))))
-    graphics_toolkit ("qt");
-  elseif (any (cell2mat (strfind (available_graphics_toolkits (), "fltk"))))
-    graphics_toolkit ("fltk");
-  elseif (any (cell2mat (strfind (available_graphics_toolkits (), "gnuplot"))))
-    graphics_toolkit ("gnuplot");
+  if (exist ("available_graphics_toolkits") == 5)
+    if (any (cell2mat (strfind (available_graphics_toolkits (), "qt"))))
+      graphics_toolkit ("qt");
+    elseif (any (cell2mat (strfind (available_graphics_toolkits (), "fltk"))))
+      graphics_toolkit ("fltk");
+    elseif (any (cell2mat (strfind (available_graphics_toolkits (), "gnuplot"))))
+      graphics_toolkit ("gnuplot");
+    endif
   endif
 
   # Choose Gnuplot terminal based on available.
-  [~,s] = system ([gnuplot_binary " -e 'set term' 2>&1 | grep '\\<qt\\> '"]);
+  [status, s] = system ([gnuplot_binary " -e 'set term' 2>&1 | grep '\\<qt\\> '"]);
   if isempty (s)
     putenv ("GNUTERM", "x11");
   else
     putenv ("GNUTERM", "qt");
   endif
-  clear s
+  clear s status
 
 endif
