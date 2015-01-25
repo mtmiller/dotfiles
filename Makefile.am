@@ -7,6 +7,7 @@ dotfiles = \
  bash_profile \
  bashrc \
  bazaar/ignore \
+ caff/gnupghome/gpg.conf \
  colordiffrc \
  cshrc \
  cvsignore \
