@@ -13,6 +13,7 @@ dotfiles = \
  cvsrc \
  dircolors \
  emacs \
+ gbp.conf \
  gitignore \
  hgignore \
  inputrc \
