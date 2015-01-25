@@ -12,6 +12,7 @@ dotfiles = \
  cshrc \
  cvsignore \
  cvsrc \
+ devscripts \
  dircolors \
  emacs \
  gbp.conf \

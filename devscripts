@@ -1,0 +1,11 @@
+# Default settings for bts(1)
+BTS_CACHE_MODE=mbox
+
+# Default settings for debchange(1)
+DEBCHANGE_RELEASE_HEURISTIC=changelog
+DEBCHANGE_MULTIMAINT=yes
+DEBCHANGE_MULTIMAINT_MERGE=yes
+
+# Default settings for debuild(1)
+DEBUILD_LINTIAN=yes
+DEBUILD_LINTIAN_OPTS="-IE --pedantic --color=auto"
