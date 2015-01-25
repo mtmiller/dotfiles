@@ -21,6 +21,7 @@ dotfiles = \
  ipython/profile_default/ipython_config.py \
  irbrc \
  lintianrc \
+ mk-sbuild.rc \
  octaverc \
  profile \
  quiltrc \

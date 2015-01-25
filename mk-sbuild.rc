@@ -1,0 +1,35 @@
+# ~/.mk-sbuild.rc
+
+# Override the sbuild chroot naming convention
+CHROOT_NAME="${name}-${CHROOT_ARCH}-sbuild"
+
+# Override the sbuild synonym naming convention as well
+if [ -z "$synonym" ]; then
+    CHROOT_SYNONYM=""
+else
+    CHROOT_SYNONYM="${synonym}-${CHROOT_ARCH}-sbuild"
+fi
+
+# Set the URL to install from
+case "$DISTRO" in
+ubuntu)
+    case "$CHROOT_ARCH" in
+    amd64 | i386)
+        DEBOOTSTRAP_MIRROR="http://archive.ubuntu.com/ubuntu"
+        ;;
+    armhf | armel | hppa | ia64 | lpia | sparc)
+        DEBOOTSTRAP_MIRROR="http://ports.ubuntu.com/ubuntu-ports"
+        ;;
+    powerpc)
+        if [ "$RELEASE" != "dapper" ]; then
+            DEBOOTSTRAP_MIRROR="http://ports.ubuntu.com/ubuntu-ports"
+        else
+            DEBOOTSTRAP_MIRROR="http://archive.ubuntu.com/ubuntu"
+        fi
+        ;;
+    esac
+    ;;
+debian)
+    DEBOOTSTRAP_MIRROR="http://ftp.us.debian.org/debian"
+    ;;
+esac
