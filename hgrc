@@ -1,0 +1,23 @@
+[alias]
+describe = log -r . --template '{latesttag}-{latesttagdistance}-{node|short}\n'
+
+[diff]
+git = True
+showfunc = True
+
+[extensions]
+color =
+convert =
+graphlog =
+hgk =
+hgview =
+histedit =
+mq =
+pager =
+progress =
+purge =
+rebase =
+record =
+
+[ui]
+ignore = ~/.hgignore

@@ -6,9 +6,11 @@ dotfiles = \
  bash_logout \
  bash_profile \
  bashrc \
+ bazaar/bazaar.conf \
  bazaar/ignore \
  caff/gnupghome/gpg.conf \
  colordiffrc \
+ config/git/ignore \
  cshrc \
  cvsignore \
  cvsrc \
@@ -17,8 +19,9 @@ dotfiles = \
  emacs \
  gbp.conf \
  gdbinit \
- gitignore \
+ gitconfig \
  hgignore \
+ hgrc \
  inputrc \
  ipython/ipy_user_conf.py \
  ipython/ipythonrc \

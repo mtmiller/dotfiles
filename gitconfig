@@ -1,0 +1,6 @@
+[color]
+	ui = auto
+[core]
+	excludesfile = ~/.config/git/ignore
+[web]
+	browser = chromium
