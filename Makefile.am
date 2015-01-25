@@ -16,6 +16,7 @@ dotfiles = \
  dircolors \
  emacs \
  gbp.conf \
+ gdbinit \
  gitignore \
  hgignore \
  inputrc \
