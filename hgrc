@@ -1,23 +1,35 @@
 [alias]
-describe = log -r . --template '{latesttag}-{latesttagdistance}-{node|short}\n'
+describe = log --rev . --template '{latesttag}-{latesttagdistance}-{node|short}\n'
+gc = strip --hidden --rev 'extinct()'
+grepdir = !$HG manifest | tr '\n' '\0' | xargs -0 grep --color=auto -E -- $@
+
+[defaults]
+log = -v
 
 [diff]
 git = True
 showfunc = True
 
 [extensions]
+churn =
 color =
 convert =
 graphlog =
 hgk =
 hgview =
 histedit =
+largefiles =
 mq =
 pager =
 progress =
 purge =
 rebase =
 record =
+shelve =
+
+[pager]
+attend = annotate, cat, diff, export, glog, help, incoming, log, outgoing, \
+         qdiff, status, tags
 
 [ui]
 ignore = ~/.hgignore
