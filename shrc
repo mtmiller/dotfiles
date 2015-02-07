@@ -123,6 +123,17 @@ if [ -n "$EDITOR" ]; then
     export FCEDIT
 fi
 
+# Apply my preferred terminal control modes on known terminal types.
+if tty > /dev/null 2>&1; then
+    case "$TERM" in
+    linux|rxvt*|screen*|xterm*)
+        for mode in sane -brkint -imaxbel iutf8 -ixany -ixoff -ixon; do
+            stty $mode > /dev/null 2>&1
+        done
+        ;;
+    esac
+fi
+
 if [ -r "$HOME/.shrc.local" ]; then
     . "$HOME/.shrc.local"
 fi
