@@ -8,6 +8,7 @@ dotfiles = \
  bashrc \
  bazaar/bazaar.conf \
  bazaar/ignore \
+ byobu/.tmux.conf \
  caff/gnupghome/gpg.conf \
  colordiffrc \
  config/git/ignore \
