@@ -115,7 +115,12 @@ endif
 " Prefer a dark background on terminal emulators.
 if &term =~ "^xterm"
   set background=dark
-  set t_Co=16
+endif
+if &term =~ "^screen"
+  set background=dark
+  if strlen($TMUX)
+    set t_Co=256
+  endif
 endif
 
 " User customizations for syntax highlighting.
