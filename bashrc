@@ -101,6 +101,23 @@ case "$TERM" in
         unset fn
         alias ls='ls --color=auto'
 
+        case "$TERM" in
+        *256col*)
+            GREP_COLOR="38;5;160"
+            GREP_COLORS="ms=01;38;5;160:mc=01;38;5;160:sl=:cx=:fn=38;5;139"
+            GREP_COLORS="$GREP_COLORS:ln=38;5;117:bn=38;5;117:se=38;5;37"
+            ;;
+        *)
+            GREP_COLOR="01;31"
+            GREP_COLORS="ms=01;31:mc=01;31:sl=:cx=:fn=35:ln=34:bn=34:se=36"
+            ;;
+        esac
+        if [ "$TMUX" ]; then
+            GREP_COLOR="38;5;160"
+            GREP_COLORS="ms=01;38;5;160:mc=01;38;5;160:sl=:cx=:fn=38;5;139"
+            GREP_COLORS="$GREP_COLORS:ln=38;5;117:bn=38;5;117:se=38;5;37"
+        fi
+        export GREP_COLOR GREP_COLORS
         alias grep='grep --color=auto'
         alias fgrep='fgrep --color=auto'
         alias egrep='egrep --color=auto'
