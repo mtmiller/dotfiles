@@ -63,11 +63,21 @@ case "$TERM" in
     # GNU ls and dircolors are both part of coreutils, prefer this option.
     # Fall back to colorls for *BSD.
     if [ -x /usr/bin/dircolors ]; then
-        if [ -r ~/.dircolors ]; then
+        case "$TERM" in
+        *256col*) fn=~/.dircolors-256color ;;
+        *)        fn=~/.dircolors ;;
+        esac
+        if [ "$TMUX" ]; then
+            fn=~/.dircolors-256color
+        fi
+        if [ ! -r $fn ]; then
+            fn=~/.dircolors
+        fi
+        if [ -r $fn ]; then
             # be backwards-compatible: attempt to detect newer keywords not
             # understood by the available version of dircolors and filter
             # them out
-            errs=$(dircolors -b ~/.dircolors 2>&1 > /dev/null)
+            errs=$(dircolors -b $fn 2>&1 > /dev/null)
             bad=$(echo "$errs" | sed -n 's/^.*: unrecognized keyword \(.*\)$/\1/p')
             if [ "$bad" ]; then
                 fix='grep -F -v "$bad"'
@@ -80,14 +90,15 @@ case "$TERM" in
                     *OTHER*) fix="grep -v 'SET[GU]ID' | $fix" ;;
                     esac
                 done
-                eval "$(cat ~/.dircolors | eval $fix | dircolors -b -)"
+                eval "$(cat $fn | eval $fix | dircolors -b -)"
             else
-                eval "$(dircolors -b ~/.dircolors)"
+                eval "$(dircolors -b $fn)"
             fi
             unset bad errs fix word
         else
             eval "$(dircolors -b)"
         fi
+        unset fn
         alias ls='ls --color=auto'
 
         alias grep='grep --color=auto'

@@ -17,6 +17,7 @@ dotfiles = \
  cvsrc \
  devscripts \
  dircolors \
+ dircolors-256color \
  emacs \
  gbp.conf \
  gdbinit \

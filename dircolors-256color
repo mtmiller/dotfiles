@@ -1,0 +1,179 @@
+# Configuration file for dircolors, a utility to help you set the
+# LS_COLORS environment variable used by GNU ls with the --color option.
+
+# Copyright (C) 1996-2015 Free Software Foundation, Inc.
+# Copying and distribution of this file, with or without modification,
+# are permitted provided the copyright notice and this notice are preserved.
+
+# Modified for 256-color terminals.
+
+# Below, there should be one TERM entry for each termtype that is colorizable
+TERM gnome-256color
+TERM putty-256color
+TERM rxvt-256color
+TERM rxvt-unicode-256color
+TERM rxvt-unicode256
+TERM screen-256color
+TERM screen-256color-bce
+TERM st-256color
+TERM xterm-256color
+
+# Below are the color init strings for the basic file types. A color init
+# string consists of one or more of the following numeric codes:
+# Attribute codes:
+# 00=none 01=bold 04=underscore 05=blink 07=reverse 08=concealed
+# Text color codes:
+# 30=black 31=red 32=green 33=yellow 34=blue 35=magenta 36=cyan 37=white
+# Background color codes:
+# 40=black 41=red 42=green 43=yellow 44=blue 45=magenta 46=cyan 47=white
+#NORMAL 00	# no color code at all
+#FILE 00	# regular file: use no color at all
+RESET 0		# reset to "normal" color
+DIR 38;5;111	# directory
+LINK 38;5;87	# symbolic link.  (If you set this to 'target' instead of a
+                # numerical value, the color is as for the file pointed to.)
+MULTIHARDLINK 00	# regular file with more than one link
+FIFO 38;5;214	# pipe
+SOCK 38;5;139	# socket
+DOOR 38;5;139	# door
+BLK 38;5;227	# block device driver
+CHR 38;5;227	# character device driver
+ORPHAN 38;5;160 # symlink to nonexistent file, or non-stat'able file
+SETUID 38;5;232;48;5;160	# file that is setuid (u+s)
+SETGID 38;5;232;48;5;178	# file that is setgid (g+s)
+CAPABILITY 38;5;232;48;5;160	# file with capability
+STICKY_OTHER_WRITABLE 38;5;232;48;5;64 # dir that is sticky and other-writable (+t,o+w)
+OTHER_WRITABLE 38;5;55;48;5;64 # dir that is other-writable (o+w) and not sticky
+STICKY 38;5;251;48;5;25	# dir with the sticky bit set (+t) and not other-writable
+
+# This is for files with execute permission:
+EXEC 38;5;119
+
+# List any file extensions like '.gz' or '.tar' that you would like ls
+# to colorize below. Put the extension, a space, and the color init string.
+# (and any comments you want to add after a '#')
+
+# If you use DOS-style suffixes, you may want to uncomment the following:
+#.cmd 38;5;119 # executables (bright green)
+#.exe 38;5;119
+#.com 38;5;119
+#.btm 38;5;119
+#.bat 38;5;119
+# Or if you want to colorize scripts even if they do not have the
+# executable bit actually set.
+#.sh  38;5;119
+#.csh 38;5;119
+
+ # archives or compressed (bright red)
+.tar 38;5;160
+.tgz 38;5;160
+.arc 38;5;160
+.arj 38;5;160
+.taz 38;5;160
+.lha 38;5;160
+.lz4 38;5;160
+.lzh 38;5;160
+.lzma 38;5;160
+.tlz 38;5;160
+.txz 38;5;160
+.tzo 38;5;160
+.t7z 38;5;160
+.zip 38;5;160
+.z   38;5;160
+.Z   38;5;160
+.dz  38;5;160
+.gz  38;5;160
+.lrz 38;5;160
+.lz  38;5;160
+.lzo 38;5;160
+.xz  38;5;160
+.bz2 38;5;160
+.bz  38;5;160
+.tbz 38;5;160
+.tbz2 38;5;160
+.tz  38;5;160
+.deb 38;5;160
+.rpm 38;5;160
+.jar 38;5;160
+.war 38;5;160
+.ear 38;5;160
+.sar 38;5;160
+.rar 38;5;160
+.alz 38;5;160
+.ace 38;5;160
+.zoo 38;5;160
+.cpio 38;5;160
+.7z  38;5;160
+.rz  38;5;160
+.cab 38;5;160
+
+# image formats
+.jpg 38;5;139
+.jpeg 38;5;139
+.gif 38;5;139
+.bmp 38;5;139
+.pbm 38;5;139
+.pgm 38;5;139
+.ppm 38;5;139
+.tga 38;5;139
+.xbm 38;5;139
+.xpm 38;5;139
+.tif 38;5;139
+.tiff 38;5;139
+.png 38;5;139
+.svg 38;5;139
+.svgz 38;5;139
+.mng 38;5;139
+.pcx 38;5;139
+.mov 38;5;139
+.mpg 38;5;139
+.mpeg 38;5;139
+.m2v 38;5;139
+.mkv 38;5;139
+.webm 38;5;139
+.ogm 38;5;139
+.mp4 38;5;139
+.m4v 38;5;139
+.mp4v 38;5;139
+.vob 38;5;139
+.qt  38;5;139
+.nuv 38;5;139
+.wmv 38;5;139
+.asf 38;5;139
+.rm  38;5;139
+.rmvb 38;5;139
+.flc 38;5;139
+.avi 38;5;139
+.fli 38;5;139
+.flv 38;5;139
+.gl 38;5;139
+.dl 38;5;139
+.xcf 38;5;139
+.xwd 38;5;139
+.yuv 38;5;139
+.cgm 38;5;139
+.emf 38;5;139
+
+# http://wiki.xiph.org/index.php/MIME_Types_and_File_Extensions
+.ogv 38;5;139
+.ogx 38;5;139
+
+# audio formats
+.aac 38;5;37
+.au 38;5;37
+.flac 38;5;37
+.m4a 38;5;37
+.mid 38;5;37
+.midi 38;5;37
+.mka 38;5;37
+.mp3 38;5;37
+.mpc 38;5;37
+.ogg 38;5;37
+.ra 38;5;37
+.wav 38;5;37
+
+# http://wiki.xiph.org/index.php/MIME_Types_and_File_Extensions
+.oga 38;5;37
+.opus 38;5;37
+.spx 38;5;37
+.xspf 38;5;37
