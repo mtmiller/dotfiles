@@ -123,15 +123,24 @@ if [ -n "$EDITOR" ]; then
     export FCEDIT
 fi
 
-# Apply my preferred terminal control modes on known terminal types.
 if tty > /dev/null 2>&1; then
+
+    # Apply my preferred terminal control modes on known terminal types.
     case "$TERM" in
     linux|rxvt*|screen*|xterm*)
         for mode in sane -brkint -imaxbel iutf8 -ixany -ixoff -ixon; do
             stty $mode > /dev/null 2>&1
         done
+        unset mode
         ;;
     esac
+
+    # Upgrade xterm -> xterm-256color, all modern terminals support 256 colors.
+    if [ X"$TERM" = Xxterm ]; then
+        TERM=xterm-256color
+        export TERM
+    fi
+
 fi
 
 if [ -r "$HOME/.shrc.local" ]; then
