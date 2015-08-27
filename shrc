@@ -101,7 +101,7 @@ for util in less more; do
     type $util > /dev/null 2>&1 && PAGER=$util && break
 done
 if [ -n "$DISPLAY" ]; then
-    for util in chromium chromium-browser google-chrome firefox; do
+    for util in iceweasel firefox chromium chromium-browser google-chrome; do
         type $util > /dev/null 2>&1 && BROWSER=$util && break
     done
 fi

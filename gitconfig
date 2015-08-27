@@ -3,4 +3,4 @@
 [core]
 	excludesfile = ~/.config/git/ignore
 [web]
-	browser = chromium
+	browser = firefox
