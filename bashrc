@@ -103,8 +103,8 @@ case "$TERM" in
 
         case "$TERM" in
         *256col*)
-            GREP_COLOR="38;5;160"
-            GREP_COLORS="ms=01;38;5;160:mc=01;38;5;160:sl=:cx=:fn=38;5;139"
+            GREP_COLOR="01;38;5;196"
+            GREP_COLORS="ms=01;38;5;196:mc=01;38;5;196:sl=:cx=:fn=38;5;139"
             GREP_COLORS="$GREP_COLORS:ln=38;5;117:bn=38;5;117:se=38;5;37"
             ;;
         *)
@@ -113,8 +113,8 @@ case "$TERM" in
             ;;
         esac
         if [ "$TMUX" ]; then
-            GREP_COLOR="38;5;160"
-            GREP_COLORS="ms=01;38;5;160:mc=01;38;5;160:sl=:cx=:fn=38;5;139"
+            GREP_COLOR="01;38;5;196"
+            GREP_COLORS="ms=01;38;5;196:mc=01;38;5;196:sl=:cx=:fn=38;5;139"
             GREP_COLORS="$GREP_COLORS:ln=38;5;117:bn=38;5;117:se=38;5;37"
         fi
         export GREP_COLOR GREP_COLORS
