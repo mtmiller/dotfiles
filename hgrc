@@ -1,7 +1,8 @@
 [alias]
-describe = log --rev . --template '{latesttag}-{latesttagdistance}-{node|short}\n'
+describe = log --limit 1 --template '{latesttag}+{latesttagdistance}-{node|short}\n'
 gc = strip --hidden --rev 'extinct()'
 grepdir = !$HG manifest | tr '\n' '\0' | xargs -0 grep --color=auto -E -- $@
+ls = manifest
 
 [defaults]
 log = -v
