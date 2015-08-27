@@ -55,41 +55,6 @@ for dir in `perl -e "$cmd" 2> /dev/null`; do
     fi
 done
 
-# Configure user Python library paths.
-# Assume Python packages are installed as python setup.py install --prefix=~
-cmd="from distutils import sysconfig"
-cmd="$cmd; print sysconfig.get_python_lib(0,0,prefix='$HOME')"
-for dir in `python -c "$cmd" 2> /dev/null`; do
-    if [ -n "$dir" ]; then
-        __list_prepend_uniq PYTHONPATH "$dir"
-        export PYTHONPATH
-    fi
-done
-
-# Configure personal RubyGems environment and add bin directory to PATH.
-cmd='puts (defined?(RbConfig) ? RbConfig : Config)::CONFIG["ruby_version"]'
-ver=$(ruby -rrbconfig -e "$cmd" 2> /dev/null)
-if [ -n "$ver" ]; then
-    GEM_HOME="$HOME/.gem/ruby/$ver"
-    GEM_PATH="$GEM_HOME"
-    export GEM_HOME GEM_PATH
-fi
-cmd='puts Gem.default_dir'
-dir=$(ruby -rrubygems -e "$cmd" 2> /dev/null)
-if [ -n "$dir" ] && [ -d "$dir" ]; then
-    __list_append_uniq GEM_PATH "$dir"
-    export GEM_PATH
-fi
-cmd='puts Gem.bindir'
-dir=$(ruby -rrubygems -e "$cmd" 2> /dev/null)
-if [ -n "$dir" ] && [ -d "$dir" ]; then
-    if ! __list_contains PATH "$dir"; then
-        # Put this directory at the front of PATH, but after ~/bin if present.
-        PATH=$(echo "$PATH" | sed -e 's,^\(.*'"$HOME/bin"':\)\?,\1'"$dir:,")
-    fi
-fi
-unset cmd dir ver
-
 # Set default text editor, pager, and web browser.
 for util in vimx vim vi ex ed; do
     type $util > /dev/null 2>&1 && EDITOR=$util && break
