@@ -30,6 +30,9 @@ ubuntu)
     esac
     ;;
 debian)
-    DEBOOTSTRAP_MIRROR="http://ftp.us.debian.org/debian"
+    DEBOOTSTRAP_MIRROR="http://httpredir.debian.org/debian"
     ;;
 esac
+
+# Always use eatmydata with sbuild
+EATMYDATA=1

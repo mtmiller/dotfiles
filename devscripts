@@ -9,3 +9,7 @@ DEBCHANGE_MULTIMAINT_MERGE=yes
 # Default settings for debuild(1)
 DEBUILD_LINTIAN=yes
 DEBUILD_LINTIAN_OPTS="-IE --pedantic --color=auto"
+
+# Default settings for ubuntu-dev-tools(5)
+UBUNTUTOOLS_BUILDER=sbuild
+UBUNTUTOOLS_DEBIAN_MIRROR="http://httpredir.debian.org/debian"
