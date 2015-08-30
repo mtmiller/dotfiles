@@ -1,4 +1,4 @@
-emacs.font: Inconsolata-11
+emacs.font: Monospace-10
 Rxvt.background: #000000
 Rxvt.foreground: #d3d7cf
 Rxvt.color0: #000000
@@ -18,7 +18,7 @@ Rxvt.color13: #ad7fa8
 Rxvt.color14: #34e2e2
 Rxvt.color15: #eeeeec
 Rxvt.font: 7x14
-URxvt.font: xft:Inconsolata:pixelsize=14
+URxvt.font: xft:Monospace:size=10
 URxvt.letterSpace: -1
 UXTerm.background: #000000
 UXterm.foreground: #d3d7cf
@@ -41,8 +41,8 @@ UXTerm.vt100.color13: #ad7fa8
 UXTerm.vt100.color14: #34e2e2
 UXTerm.vt100.color15: #eeeeec
 UXTerm.vt100.font: 7x14
-UXTerm.vt100.faceName: Inconsolata
-UXTerm.vt100.faceSize: 11
+UXTerm.vt100.faceName: Monospace
+UXTerm.vt100.faceSize: 10
 XTerm.background: #000000
 XTerm.foreground: #d3d7cf
 XTerm.vt100.background: #000000
@@ -64,5 +64,5 @@ XTerm.vt100.color13: #ad7fa8
 XTerm.vt100.color14: #34e2e2
 XTerm.vt100.color15: #eeeeec
 XTerm.vt100.font: 7x14
-XTerm.vt100.faceName: Inconsolata
-XTerm.vt100.faceSize: 11
+XTerm.vt100.faceName: Monospace
+XTerm.vt100.faceSize: 10

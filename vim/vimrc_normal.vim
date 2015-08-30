@@ -154,7 +154,7 @@ if has("gui")
   " Fonts to use in gvim.  Always have fallbacks, and handle each platform in
   " its own special way, see :help setting-guifont.
   if has("gui_gtk2")
-    set guifont=Inconsolata\ 11,Liberation\ Mono\ 10,Monospace\ 10
+    set guifont=Monospace\ 10
   elseif has("x11")
     set guifont=-*-lucidatypewriter-medium-r-normal-*-*-120-*-*-m-*-*
   elseif has("gui_win32")

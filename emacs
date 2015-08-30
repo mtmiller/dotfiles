@@ -13,4 +13,4 @@
   '(ring-bell-function 'ignore)
   '(scroll-bar-mode 'right))
 
-(add-to-list 'default-frame-alist '(font . "Inconsolata-11"))
+(add-to-list 'default-frame-alist '(font . "Monospace-10"))
