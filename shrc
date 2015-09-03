@@ -82,6 +82,16 @@ if [ "$PAGER" = less ]; then
     LESS="${LESS:-ix8z-3FQRSX}"
     MANPAGER='less -s'
     export LESS MANPAGER
+    unset MANLESS
+    if man --help 2>&1 | grep -- "--prompt=" > /dev/null 2>&1; then
+        if man --version 2>&1 | grep -E " 2\.([45]|6\.[0123])" > /dev/null 2>&1; then
+            MANLESS=$LESS
+            export MANLESS
+        else
+            MANLESS='?e(END)'
+            export MANLESS
+        fi
+    fi
 fi
 if [ -n "$EDITOR" ]; then
     FCEDIT="$EDITOR"
