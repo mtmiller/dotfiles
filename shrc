@@ -79,7 +79,7 @@ done
 [ -n "$BROWSER" ] && export BROWSER || unset BROWSER
 unset util
 if [ "$PAGER" = less ]; then
-    LESS="${LESS:-iFRSX}"
+    LESS="${LESS:-ix8z-3FQRSX}"
     MANPAGER='less -s'
     export LESS MANPAGER
 fi
